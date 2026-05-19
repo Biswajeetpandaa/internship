@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - InternHub</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Dashboard CSS -->
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <div class="sidebar-logo-icon"><i class="bi bi-buildings"></i></div>
+            <span class="sidebar-logo-text">InternHub</span>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="sidebar-section-title">Main Menu</div>
+            <a href="student_dashbord.html" class="sidebar-link active">
+                <i class="bi bi-grid-1x2-fill"></i>
+                <span class="link-text">Dashboard</span>
+            </a>
+            <a href="internships.html" class="sidebar-link">
+                <i class="bi bi-briefcase-fill"></i>
+                <span class="link-text">My Internships</span>
+            </a>
+            <a href="#" class="sidebar-link">
+                <i class="bi bi-card-checklist"></i>
+                <span class="link-text">Test Results</span>
+            </a>
+            <a href="#" class="sidebar-link">
+                <i class="bi bi-bell-fill"></i>
+                <span class="link-text">Notifications</span>
+                <span class="badge-count">3</span>
+            </a>
+
+            <div class="sidebar-section-title">Learning</div>
+            <a href="learning.html" class="sidebar-link">
+                <i class="bi bi-book-fill"></i>
+                <span class="link-text">Learning Resources</span>
+            </a>
+            <a href="#" class="sidebar-link">
+                <i class="bi bi-patch-check-fill"></i>
+                <span class="link-text">Certificates</span>
+            </a>
+
+            <div class="sidebar-section-title">Account</div>
+            <a href="#" class="sidebar-link">
+                <i class="bi bi-person-fill"></i>
+                <span class="link-text">Profile</span>
+            </a>
+            <a href="#" class="sidebar-link">
+                <i class="bi bi-credit-card-fill"></i>
+                <span class="link-text">Payment History</span>
+            </a>
+            <a href="index.html" class="sidebar-link">
+                <i class="bi bi-box-arrow-left"></i>
+                <span class="link-text">Logout</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Dashboard Content -->
+    <main class="dashboard-main">
+        <!-- Top Bar -->
+        <header class="dashboard-topbar">
+            <button class="topbar-toggle">
+                <i class="bi bi-list"></i>
+            </button>
+            <input type="search" class="topbar-search" placeholder="Search internships, resources...">
+
+            <div class="topbar-actions">
+                <button class="topbar-icon-btn">
+                    <i class="bi bi-bell-fill"></i>
+                    <span class="notification-dot"></span>
+                </button>
+                <button class="topbar-icon-btn">
+                    <i class="bi bi-envelope-fill"></i>
+                </button>
+                <div class="dropdown">
+                    <img src="https://i.pravatar.cc/150?u=student" alt="User Avatar" class="user-avatar-sm"
+                        data-bs-toggle="dropdown">
+                    <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="index.html">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="dashboard-content">
+            <div class="container-fluid">
+                <!-- Welcome Header -->
+                <div class="mb-4">
+                    <h1 class="section-title mb-0">Welcome back, Alex!</h1>
+                    <p class="text-muted-light">Here's a snapshot of your internship journey.</p>
+                </div>
+
+                <!-- Stats Widgets -->
+                <div class="row g-4 mb-4">
+                    <div class="col-md-6 col-xl-3">
+                        <div class="widget-card">
+                            <div class="d-flex align-items-center">
+                                <div class="widget-icon bg-primary-gradient me-3"><i class="bi bi-briefcase-fill"></i>
+                                </div>
+                                <div>
+                                    <div class="widget-number">12</div>
+                                    <div class="widget-label">Applied Internships</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-3">
+                        <div class="widget-card">
+                            <div class="d-flex align-items-center">
+                                <div class="widget-icon bg-accent-gradient me-3"><i class="bi bi-card-checklist"></i>
+                                </div>
+                                <div>
+                                    <div class="widget-number">3</div>
+                                    <div class="widget-label">Active Applications</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-3">
+                        <div class="widget-card">
+                            <div class="d-flex align-items-center">
+                                <div class="widget-icon bg-success-gradient me-3"><i class="bi bi-patch-check-fill"></i>
+                                </div>
+                                <div>
+                                    <div class="widget-number">85%</div>
+                                    <div class="widget-label">Avg. Test Score</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-3">
+                        <div class="widget-card">
+                            <div class="d-flex align-items-center">
+                                <div class="widget-icon bg-info-gradient me-3"><i class="bi bi-book-fill"></i></div>
+                                <div>
+                                    <div class="widget-number">4</div>
+                                    <div class="widget-label">Courses Completed</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts & Timeline -->
+                <div class="row g-4 mb-4">
+                    <!-- Application Status Chart -->
+                    <div class="col-xl-8">
+                        <div class="chart-card h-100">
+                            <div class="chart-card-header">
+                                <h5 class="chart-title">Application Activity</h5>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-outline-light-grad dropdown-toggle" type="button"
+                                        data-bs-toggle="dropdown">
+                                        Last 6 Months
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-dark">
+                                        <li><a class="dropdown-item" href="#">Last 30 Days</a></li>
+                                        <li><a class="dropdown-item" href="#">Last 6 Months</a></li>
+                                        <li><a class="dropdown-item" href="#">This Year</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div style="height: 300px;">
+                                <canvas id="applicationStatusChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Internship Tracking Timeline -->
+                    <div class="col-xl-4">
+                        <div class="chart-card h-100">
+                            <h5 class="chart-title mb-3">Internship Tracking</h5>
+                            <div class="timeline">
+                                <!-- Timeline Item 1 -->
+                                <div class="timeline-item">
+                                    <div class="timeline-dot completed"><i class="bi bi-check-lg"></i></div>
+                                    <div class="timeline-content">
+                                        <h6 class="mb-1 fs-sm fw-bold">Application Sent</h6>
+                                        <p class="text-muted-light fs-xs mb-0">To: Tech Innovators Inc.</p>
+                                        <small class="text-muted-light fs-xxs">May 15, 2026</small>
+                                    </div>
+                                </div>
+                                <!-- Timeline Item 2 -->
+                                <div class="timeline-item">
+                                    <div class="timeline-dot active"></div>
+                                    <div class="timeline-content">
+                                        <h6 class="mb-1 fs-sm fw-bold">Application Under Review</h6>
+                                        <p class="text-muted-light fs-xs mb-0">Your profile is being reviewed.</p>
+                                    </div>
+                                </div>
+                                <!-- Timeline Item 3 -->
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-content">
+                                        <h6 class="mb-1 fs-sm fw-bold text-muted">Online Assessment</h6>
+                                    </div>
+                                </div>
+                                <!-- Timeline Item 4 -->
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-content">
+                                        <h6 class="mb-1 fs-sm fw-bold text-muted">Interview</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Applications & Learning Progress -->
+                <div class="row g-4">
+                    <!-- Recent Applications Table -->
+                    <div class="col-xl-8">
+                        <div class="data-table-container">
+                            <div class="data-table-header">
+                                <h5 class="mb-0">Recent Applications</h5>
+                                <a href="#" class="btn btn-sm btn-primary-grad">View All</a>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Internship Title</th>
+                                            <th>Company</th>
+                                            <th>Date Applied</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="fw-bold">Frontend Developer Intern</div>
+                                                <div class="text-muted-light fs-sm">Remote</div>
+                                            </td>
+                                            <td>Tech Innovators Inc.</td>
+                                            <td>May 15, 2026</td>
+                                            <td><span class="status-badge review">In Review</span></td>
+                                            <td><button class="btn btn-sm btn-outline-light-grad">Track</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="fw-bold">Digital Marketing Intern</div>
+                                                <div class="text-muted-light fs-sm">New York</div>
+                                            </td>
+                                            <td>Creative Solutions</td>
+                                            <td>May 12, 2026</td>
+                                            <td><span class="status-badge approved">Shortlisted</span></td>
+                                            <td><button class="btn btn-sm btn-outline-light-grad">View</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="fw-bold">HR Intern</div>
+                                                <div class="text-muted-light fs-sm">Remote</div>
+                                            </td>
+                                            <td>PeopleFirst HR</td>
+                                            <td>May 10, 2026</td>
+                                            <td><span class="status-badge rejected">Not Selected</span></td>
+                                            <td><button class="btn btn-sm btn-outline-light-grad"
+                                                    disabled>Closed</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="fw-bold">Data Analyst Intern</div>
+                                                <div class="text-muted-light fs-sm">San Francisco</div>
+                                            </td>
+                                            <td>DataWiz</td>
+                                            <td>May 08, 2026</td>
+                                            <td><span class="status-badge pending">Pending</span></td>
+                                            <td><button class="btn btn-sm btn-outline-light-grad">Track</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Learning Progress -->
+                    <div class="col-xl-4">
+                        <div class="chart-card h-100">
+                            <h5 class="chart-title mb-3">Learning Progress</h5>
+                            <div class="mb-4" style="height: 200px; position: relative;">
+                                <canvas id="learningProgressChart"></canvas>
+                                <div class="position-absolute top-50 start-50 translate-middle text-center">
+                                    <div class="fs-2 fw-bold text-grad">65%</div>
+                                    <div class="text-muted-light fs-sm">Overall</div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-muted-light mb-2">You're doing great! Keep it up.</p>
+                                <a href="learning.html" class="btn btn-primary-grad">Continue Learning</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- CHATBOT COMPONENT -->
+    <!-- The HTML structure for the chatbot, which main.js will control -->
+    <button id="chatbotFab" class="chatbot-fab ripple-btn">
+        <i class="bi bi-chat-dots-fill"></i>
+    </button>
+
+    <div id="chatbotWindow" class="chatbot-window">
+        <div class="chatbot-header">
+            <div class="chatbot-avatar"><i class="bi bi-robot"></i></div>
+            <div>
+                <div class="fw-bold">InternHub Assistant</div>
+                <small class="text-light opacity-75">Online</small>
+            </div>
+        </div>
+        <div id="chatMessages" class="chatbot-messages">
+            <div class="chat-msg bot">
+                Hello! How can I help you find your next internship today?
+            </div>
+        </div>
+        <div class="chatbot-quick-btns">
+            <button class="quick-btn">How to apply?</button>
+            <button class="quick-btn">Payment</button>
+            <button class="quick-btn">Certificate</button>
+        </div>
+        <div class="chatbot-input-row">
+            <input type="text" id="chatInput" class="chatbot-input" placeholder="Ask a question...">
+            <button id="chatSend" class="chatbot-send"><i class="bi bi-send-fill"></i></button>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+
+    <!-- Main Site JS -->
+    <script src="js/main.js"></script>
+    <!-- Dashboard Specific JS -->
+    <script src="js/dashboard.js"></script>
+    <!-- Theme Toggle -->
+    <script src="js/theme.js"></script>
+
+</body>
+
+</html>
+

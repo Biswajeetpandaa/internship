@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - InternHub</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <style>
+    .sidebar { background: #080618; }
+    .admin-kpi { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-md); padding: 1.5rem; position: relative; overflow: hidden; transition: var(--transition); }
+    .admin-kpi:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .admin-kpi-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
+    .admin-kpi-num { font-size: 2rem; font-weight: 900; line-height: 1; margin: .5rem 0 .2rem; }
+    .kpi-bar { position: absolute; bottom: 0; left: 0; height: 3px; width: 100%; }
+    .action-btn { background: transparent; border: 1px solid var(--card-border); color: var(--text-muted); width: 30px; height: 30px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; transition: var(--transition); font-size: .85rem; }
+    .action-btn:hover { background: rgba(102,126,234,.2); border-color: var(--primary); color: #fff; }
+    .review-star { color: #f6d365; font-size: .85rem; }
+  </style>
+</head>
+<body>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Admin Sidebar -->
+  <aside class="sidebar admin-sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon"><i class="bi bi-shield-fill-check"></i></div>
+      <span class="sidebar-logo-text">Admin Panel</span>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-title">Overview</div>
+      <a href="admin-dashboard.html" class="sidebar-link active"><i class="bi bi-speedometer2"></i><span class="link-text">Dashboard</span></a>
+      <a href="#" class="sidebar-link"><i class="bi bi-people-fill"></i><span class="link-text">Users</span><span class="badge-count">1,240</span></a>
+      <a href="#" class="sidebar-link"><i class="bi bi-briefcase-fill"></i><span class="link-text">Internships</span><span class="badge-count">2,500</span></a>
+
+      <div class="sidebar-section-title">Management</div>
+      <a href="#" class="sidebar-link"><i class="bi bi-card-checklist"></i><span class="link-text">Test Management</span></a>
+      <a href="#" class="sidebar-link"><i class="bi bi-star-fill"></i><span class="link-text">Reviews</span><span class="badge-count">12</span></a>
+      <a href="#" class="sidebar-link"><i class="bi bi-megaphone-fill"></i><span class="link-text">Advertisements</span></a>
+      <a href="#" class="sidebar-link"><i class="bi bi-credit-card-fill"></i><span class="link-text">Payments</span></a>
+      <a href="#" class="sidebar-link"><i class="bi bi-bell-fill"></i><span class="link-text">Notifications</span><span class="badge-count">5</span></a>
+
+      <div class="sidebar-section-title">System</div>
+      <a href="#" class="sidebar-link"><i class="bi bi-gear-fill"></i><span class="link-text">Settings</span></a>
+      <a href="index.html" class="sidebar-link"><i class="bi bi-box-arrow-left"></i><span class="link-text">Logout</span></a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main class="dashboard-main" id="dashboardMain">
+    <header class="dashboard-topbar">
+      <button class="topbar-toggle" id="sidebarToggle"><i class="bi bi-list"></i></button>
+      <input type="search" class="topbar-search" placeholder="Search users, internships...">
+      <div class="topbar-actions">
+        <button class="topbar-icon-btn" data-bs-toggle="tooltip" title="Notifications">
+          <i class="bi bi-bell-fill"></i><span class="notification-dot"></span>
+        </button>
+        <div class="dropdown">
+          <img src="https://i.pravatar.cc/150?u=admin" alt="Admin" class="user-avatar-sm" data-bs-toggle="dropdown">
+          <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+            <li><a class="dropdown-item" href="#">My Profile</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item text-danger" href="index.html">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <div class="dashboard-content">
+      <!-- Header -->
+      <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+        <div>
+          <h1 class="section-title mb-0" style="font-size:1.6rem">Admin Dashboard</h1>
+          <p class="text-muted-light fs-sm">Platform overview — May 2026</p>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-light-grad btn-sm"><i class="bi bi-download me-2"></i>Export</button>
+          <button class="btn btn-primary-grad btn-sm"><i class="bi bi-plus me-2"></i>Add Internship</button>
+        </div>
+      </div>
+
+      <!-- KPI Cards -->
+      <div class="row g-4 mb-4">
+        <div class="col-md-6 col-xl-3">
+          <div class="admin-kpi">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <div class="admin-kpi-icon" style="background:rgba(102,126,234,.15);color:var(--primary)"><i class="bi bi-people-fill"></i></div>
+              <span class="widget-trend up"><i class="bi bi-arrow-up"></i>12%</span>
+            </div>
+            <div class="admin-kpi-num gradient-text">15,240</div>
+            <div class="text-muted-light fs-sm">Total Students</div>
+            <div class="kpi-bar bg-primary-gradient"></div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <div class="admin-kpi">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <div class="admin-kpi-icon" style="background:rgba(240,147,251,.15);color:#f093fb"><i class="bi bi-briefcase-fill"></i></div>
+              <span class="widget-trend up"><i class="bi bi-arrow-up"></i>8%</span>
+            </div>
+            <div class="admin-kpi-num" style="color:#f093fb">2,500</div>
+            <div class="text-muted-light fs-sm">Active Internships</div>
+            <div class="kpi-bar bg-accent-gradient"></div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <div class="admin-kpi">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <div class="admin-kpi-icon" style="background:rgba(67,233,123,.15);color:#43e97b"><i class="bi bi-currency-rupee"></i></div>
+              <span class="widget-trend up"><i class="bi bi-arrow-up"></i>23%</span>
+            </div>
+            <div class="admin-kpi-num" style="color:#43e97b">?7.6L</div>
+            <div class="text-muted-light fs-sm">Monthly Revenue</div>
+            <div class="kpi-bar bg-success-gradient"></div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <div class="admin-kpi">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <div class="admin-kpi-icon" style="background:rgba(246,211,101,.15);color:#f6d365"><i class="bi bi-card-checklist"></i></div>
+              <span class="widget-trend down"><i class="bi bi-arrow-down"></i>3%</span>
+            </div>
+            <div class="admin-kpi-num" style="color:#f6d365">4,820</div>
+            <div class="text-muted-light fs-sm">Tests Attempted</div>
+            <div class="kpi-bar bg-warning-gradient"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts Row -->
+      <div class="row g-4 mb-4">
+        <div class="col-xl-8">
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <h5 class="chart-title">Registrations & Completions</h5>
+              <select class="form-control-dark py-1 px-2" style="width:auto;font-size:.8rem">
+                <option>Last 8 Months</option>
+                <option>Last Year</option>
+              </select>
+            </div>
+            <canvas id="registrationsChart" height="90"></canvas>
+          </div>
+        </div>
+        <div class="col-xl-4">
+          <div class="chart-card h-100">
+            <div class="chart-card-header">
+              <h5 class="chart-title">By Category</h5>
+            </div>
+            <canvas id="categoryChart" height="220"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Revenue Chart -->
+      <div class="row g-4 mb-4">
+        <div class="col-xl-6">
+          <div class="chart-card">
+            <div class="chart-card-header"><h5 class="chart-title">Revenue Trend</h5></div>
+            <canvas id="revenueChart" height="100"></canvas>
+          </div>
+        </div>
+        <div class="col-xl-6">
+          <div class="chart-card h-100">
+            <h5 class="chart-title mb-3">Quick Stats</h5>
+            <div class="metric-mini"><div class="metric-mini-icon bg-primary bg-opacity-10 text-primary"><i class="bi bi-envelope-fill"></i></div><div><div class="metric-mini-num gradient-text">1,240</div><div class="metric-mini-label">New Registrations (May)</div></div><span class="badge bg-success ms-auto">+12%</span></div>
+            <div class="metric-mini"><div class="metric-mini-icon" style="background:rgba(240,147,251,.1);color:#f093fb"><i class="bi bi-star-fill"></i></div><div><div class="metric-mini-num" style="color:#f093fb">4.8/5</div><div class="metric-mini-label">Avg. Platform Rating</div></div><span class="badge bg-warning text-dark ms-auto">New</span></div>
+            <div class="metric-mini"><div class="metric-mini-icon bg-success bg-opacity-10 text-success"><i class="bi bi-patch-check-fill"></i></div><div><div class="metric-mini-num text-success">892</div><div class="metric-mini-label">Certificates Issued</div></div><span class="badge bg-info ms-auto">? 8%</span></div>
+            <div class="metric-mini"><div class="metric-mini-icon" style="background:rgba(79,172,254,.1);color:#4facfe"><i class="bi bi-buildings-fill"></i></div><div><div class="metric-mini-num" style="color:#4facfe">500+</div><div class="metric-mini-label">Partner Companies</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- User Management Table -->
+      <div class="data-table-container mb-4">
+        <div class="data-table-header">
+          <h5 class="mb-0">Recent Users</h5>
+          <div class="d-flex gap-2">
+            <input type="search" class="topbar-search py-1" placeholder="Search users..." style="max-width:220px">
+            <button class="btn btn-primary-grad btn-sm px-3"><i class="bi bi-filter me-1"></i>Filter</button>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>#</th><th>Student</th><th>College</th><th>Registered</th><th>Test Score</th><th>Status</th><th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>001</td>
+                <td><div class="d-flex align-items-center gap-2"><img src="https://i.pravatar.cc/30?img=32" class="rounded-circle" width="32" height="32"><div><div class="fw-600">Sarah Jenkins</div><div class="text-muted-light fs-xs">sarah@example.com</div></div></div></td>
+                <td>IIT Bombay</td><td>May 15, 2026</td>
+                <td><span class="text-success fw-600">85%</span></td>
+                <td><span class="status-badge approved">Active</span></td>
+                <td><div class="d-flex gap-1"><button class="action-btn" title="View"><i class="bi bi-eye"></i></button><button class="action-btn" title="Edit"><i class="bi bi-pencil"></i></button><button class="action-btn text-danger" title="Delete"><i class="bi bi-trash"></i></button></div></td>
+              </tr>
+              <tr>
+                <td>002</td>
+                <td><div class="d-flex align-items-center gap-2"><img src="https://i.pravatar.cc/30?img=11" class="rounded-circle" width="32" height="32"><div><div class="fw-600">Rahul Sharma</div><div class="text-muted-light fs-xs">rahul@example.com</div></div></div></td>
+                <td>NIT Trichy</td><td>May 12, 2026</td>
+                <td><span class="text-warning fw-600">72%</span></td>
+                <td><span class="status-badge pending">Pending</span></td>
+                <td><div class="d-flex gap-1"><button class="action-btn"><i class="bi bi-eye"></i></button><button class="action-btn"><i class="bi bi-pencil"></i></button><button class="action-btn text-danger"><i class="bi bi-trash"></i></button></div></td>
+              </tr>
+              <tr>
+                <td>003</td>
+                <td><div class="d-flex align-items-center gap-2"><img src="https://i.pravatar.cc/30?img=5" class="rounded-circle" width="32" height="32"><div><div class="fw-600">Priya Patel</div><div class="text-muted-light fs-xs">priya@example.com</div></div></div></td>
+                <td>BITS Pilani</td><td>May 10, 2026</td>
+                <td><span class="text-success fw-600">91%</span></td>
+                <td><span class="status-badge approved">Active</span></td>
+                <td><div class="d-flex gap-1"><button class="action-btn"><i class="bi bi-eye"></i></button><button class="action-btn"><i class="bi bi-pencil"></i></button><button class="action-btn text-danger"><i class="bi bi-trash"></i></button></div></td>
+              </tr>
+              <tr>
+                <td>004</td>
+                <td><div class="d-flex align-items-center gap-2"><img src="https://i.pravatar.cc/30?img=15" class="rounded-circle" width="32" height="32"><div><div class="fw-600">Arjun Singh</div><div class="text-muted-light fs-xs">arjun@example.com</div></div></div></td>
+                <td>VIT Vellore</td><td>May 8, 2026</td>
+                <td><span class="text-danger fw-600">45%</span></td>
+                <td><span class="status-badge rejected">Suspended</span></td>
+                <td><div class="d-flex gap-1"><button class="action-btn"><i class="bi bi-eye"></i></button><button class="action-btn"><i class="bi bi-pencil"></i></button><button class="action-btn text-danger"><i class="bi bi-trash"></i></button></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Reviews + Notifications -->
+      <div class="row g-4">
+        <div class="col-xl-6">
+          <div class="chart-card">
+            <div class="chart-card-header"><h5 class="chart-title">Pending Reviews</h5><span class="badge-count" style="padding:4px 10px;border-radius:50px">3 Pending</span></div>
+            <div class="d-flex flex-column gap-3">
+              <div class="glass-card-dark p-3 rounded-md">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                  <div class="d-flex align-items-center gap-2"><img src="https://i.pravatar.cc/30?img=32" class="rounded-circle" width="30" height="30"><strong class="fs-sm">Sarah Jenkins</strong></div>
+                  <div class="review-star">?????</div>
+                </div>
+                <p class="text-muted-light fs-sm mb-2">"InternHub completely transformed my career path. Highly recommended!"</p>
+                <div class="d-flex gap-2"><button class="btn btn-sm btn-success-grad px-3">Approve</button><button class="btn btn-sm btn-outline-light-grad px-3">Reject</button></div>
+              </div>
+              <div class="glass-card-dark p-3 rounded-md">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                  <div class="d-flex align-items-center gap-2"><img src="https://i.pravatar.cc/30?img=11" class="rounded-circle" width="30" height="30"><strong class="fs-sm">Rahul Sharma</strong></div>
+                  <div class="review-star">?????</div>
+                </div>
+                <p class="text-muted-light fs-sm mb-2">"Great platform, got shortlisted for 2 companies within a week!"</p>
+                <div class="d-flex gap-2"><button class="btn btn-sm btn-success-grad px-3">Approve</button><button class="btn btn-sm btn-outline-light-grad px-3">Reject</button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-6">
+          <div class="chart-card h-100">
+            <div class="chart-card-header"><h5 class="chart-title">Notifications</h5><button class="btn btn-sm btn-outline-light-grad">Mark All Read</button></div>
+            <div class="notification-item unread">
+              <div class="notification-icon" style="background:rgba(102,126,234,.15);color:var(--primary)"><i class="bi bi-person-plus"></i></div>
+              <div><div class="fw-600 fs-sm">New student registration</div><div class="text-muted-light fs-xs">Priya Patel registered — 5 mins ago</div></div>
+            </div>
+            <div class="notification-item unread">
+              <div class="notification-icon" style="background:rgba(67,233,123,.15);color:#43e97b"><i class="bi bi-currency-rupee"></i></div>
+              <div><div class="fw-600 fs-sm">Payment received</div><div class="text-muted-light fs-xs">?499 from Sarah Jenkins — 20 mins ago</div></div>
+            </div>
+            <div class="notification-item">
+              <div class="notification-icon" style="background:rgba(246,211,101,.15);color:#f6d365"><i class="bi bi-star"></i></div>
+              <div><div class="fw-600 fs-sm">New review submitted</div><div class="text-muted-light fs-xs">Rahul Sharma left a 4-star review — 1 hr ago</div></div>
+            </div>
+            <div class="notification-item">
+              <div class="notification-icon" style="background:rgba(245,87,108,.15);color:#f5576c"><i class="bi bi-exclamation-triangle"></i></div>
+              <div><div class="fw-600 fs-sm">Internship expired</div><div class="text-muted-light fs-xs">Web Dev at Acme Corp listing expired — 2 hr ago</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/dashboard.js"></script>
+    <!-- Theme Toggle -->
+    <script src="js/theme.js"></script>
+</body>
+</html>
+

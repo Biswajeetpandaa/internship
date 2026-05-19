@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - InternHub</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <style>
+    .register-page { min-height: 100vh; background: var(--gradient-dark); padding-top: 2rem; padding-bottom: 3rem; }
+    .register-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 2.5rem; backdrop-filter: blur(12px); max-width: 680px; margin: 0 auto; }
+    .step-indicator { display: flex; align-items: center; justify-content: center; gap: 0; margin-bottom: 2rem; }
+    .step-dot { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08); border: 2px solid var(--card-border); display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; transition: var(--transition); position: relative; z-index: 1; }
+    .step-dot.active { background: var(--gradient-primary); border-color: var(--primary); box-shadow: 0 0 20px rgba(102,126,234,0.4); }
+    .step-dot.done { background: var(--gradient-success); border-color: #43e97b; color: #1a1a2e; }
+    .step-line { flex: 1; height: 2px; background: var(--card-border); max-width: 80px; }
+    .step-line.done { background: var(--gradient-success); }
+    .step-panel { display: none; }
+    .step-panel.active { display: block; animation: fadeIn .4s ease; }
+    @keyframes fadeIn { from { opacity:0; transform:translateX(20px); } to { opacity:1; transform:none; } }
+    .upload-zone { border: 2px dashed var(--card-border); border-radius: var(--radius-md); padding: 2.5rem; text-align: center; transition: var(--transition); cursor: pointer; }
+    .upload-zone:hover { border-color: var(--primary); background: rgba(102,126,234,0.05); }
+    .skill-pill { display: inline-flex; align-items: center; gap: 6px; background: rgba(102,126,234,0.15); border: 1px solid rgba(102,126,234,0.3); color: var(--primary); padding: 4px 12px; border-radius: 50px; font-size: .78rem; font-weight: 600; margin: 3px; cursor: pointer; }
+    .skill-pill.selected { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .invalid-feedback-custom { color: #f5576c; font-size: .78rem; margin-top: 4px; display: none; }
+    .was-validated .invalid-feedback-custom { display: block; }
+  </style>
+</head>
+<body class="register-page">
+  <div class="container py-4">
+    <div class="text-center mb-4">
+      <a href="index.html" class="navbar-brand fs-3">Intern<span style="-webkit-text-fill-color:var(--accent)">Hub</span></a>
+      <p class="text-muted-light fs-sm mt-1">Create your free account and launch your career</p>
+    </div>
+
+    <div class="register-card">
+      <!-- Step Indicator -->
+      <div class="step-indicator">
+        <div class="step-dot active" id="dot1">1</div>
+        <div class="step-line" id="line1"></div>
+        <div class="step-dot" id="dot2">2</div>
+        <div class="step-line" id="line2"></div>
+        <div class="step-dot" id="dot3">3</div>
+      </div>
+
+      <!-- Step 1: Personal Info -->
+      <div class="step-panel active" id="step1">
+        <h4 class="fw-bold mb-1">Personal Information</h4>
+        <p class="text-muted-light fs-sm mb-4">Tell us about yourself</p>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label-dark">Full Name *</label>
+            <input type="text" id="fullName" class="form-control-dark" placeholder="Alex Johnson">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label-dark">Email Address *</label>
+            <input type="email" id="email" class="form-control-dark" placeholder="alex@example.com">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label-dark">Phone Number *</label>
+            <div class="d-flex gap-2">
+              <select class="form-control-dark" style="max-width:90px">
+                <option>+91</option><option>+1</option><option>+44</option>
+              </select>
+              <input type="tel" class="form-control-dark" placeholder="98765 43210">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label-dark">Date of Birth</label>
+            <input type="date" class="form-control-dark">
+          </div>
+          <div class="col-12">
+            <label class="form-label-dark">Gender</label>
+            <div class="d-flex gap-3 mt-1">
+              <label class="d-flex align-items-center gap-2 text-muted-light fs-sm cursor-pointer">
+                <input type="radio" name="gender" value="male"> Male
+              </label>
+              <label class="d-flex align-items-center gap-2 text-muted-light fs-sm cursor-pointer">
+                <input type="radio" name="gender" value="female"> Female
+              </label>
+              <label class="d-flex align-items-center gap-2 text-muted-light fs-sm cursor-pointer">
+                <input type="radio" name="gender" value="other"> Other
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-end mt-4">
+          <button class="btn btn-primary-grad px-5" onclick="goStep(2)">Next <i class="bi bi-arrow-right ms-2"></i></button>
+        </div>
+      </div>
+
+      <!-- Step 2: Academic -->
+      <div class="step-panel" id="step2">
+        <h4 class="fw-bold mb-1">Academic & Skills</h4>
+        <p class="text-muted-light fs-sm mb-4">Help us match you with the right opportunities</p>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label-dark">College / University *</label>
+            <input type="text" class="form-control-dark" placeholder="e.g. IIT Bombay">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label-dark">Degree / Course *</label>
+            <input type="text" class="form-control-dark" placeholder="e.g. B.Tech Computer Science">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label-dark">Year of Study</label>
+            <select class="form-control-dark">
+              <option value="">Select year</option>
+              <option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option><option>Graduated</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label-dark">CGPA / Percentage</label>
+            <input type="text" class="form-control-dark" placeholder="e.g. 8.5 / 85%">
+          </div>
+          <div class="col-12">
+            <label class="form-label-dark">Skills (select all that apply)</label>
+            <div class="mt-2" id="skillsContainer">
+              <span class="skill-pill" onclick="toggleSkill(this)">Python</span>
+              <span class="skill-pill" onclick="toggleSkill(this)">JavaScript</span>
+              <span class="skill-pill" onclick="toggleSkill(this)">React.js</span>
+              <span class="skill-pill" onclick="toggleSkill(this)">Data Analysis</span>
+              <span class="skill-pill" onclick="toggleSkill(this)">SEO</span>
+              <span class="skill-pill" onclick="toggleSkill(this)">Social Media</span>
+              <span class="skill-pill" onclick="toggleSkill(this)">MS Excel</span>
+              <span class="skill-pill" onclick="toggleSkill(this)">Communication</span>
+              <span class="skill-pill" onclick="toggleSkill(this)">Leadership</span>
+              <span class="skill-pill" onclick="toggleSkill(this)">UI/UX Design</span>
+              <span class="skill-pill" onclick="toggleSkill(this)">Java</span>
+              <span class="skill-pill" onclick="toggleSkill(this)">Machine Learning</span>
+            </div>
+          </div>
+          <div class="col-12">
+            <label class="form-label-dark">Internship Preference</label>
+            <div class="d-flex flex-wrap gap-3 mt-1">
+              <label class="d-flex align-items-center gap-2 text-muted-light fs-sm cursor-pointer">
+                <input type="checkbox" checked> Remote
+              </label>
+              <label class="d-flex align-items-center gap-2 text-muted-light fs-sm cursor-pointer">
+                <input type="checkbox"> On-site
+              </label>
+              <label class="d-flex align-items-center gap-2 text-muted-light fs-sm cursor-pointer">
+                <input type="checkbox"> Paid Only
+              </label>
+              <label class="d-flex align-items-center gap-2 text-muted-light fs-sm cursor-pointer">
+                <input type="checkbox" checked> Open to Unpaid (NGO/Volunteer)
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between mt-4">
+          <button class="btn btn-outline-light-grad px-4" onclick="goStep(1)"><i class="bi bi-arrow-left me-2"></i> Back</button>
+          <button class="btn btn-primary-grad px-5" onclick="goStep(3)">Next <i class="bi bi-arrow-right ms-2"></i></button>
+        </div>
+      </div>
+
+      <!-- Step 3: Resume & Password -->
+      <div class="step-panel" id="step3">
+        <h4 class="fw-bold mb-1">Resume & Security</h4>
+        <p class="text-muted-light fs-sm mb-4">Almost done! Upload your resume and set a password.</p>
+
+        <div class="upload-zone mb-4" onclick="document.getElementById('resumeFile').click()">
+          <i class="bi bi-cloud-arrow-up fs-1 text-primary d-block mb-2"></i>
+          <h6 class="fw-bold mb-1">Upload Your Resume</h6>
+          <p class="text-muted-light fs-sm mb-2">Drag & drop or click to browse</p>
+          <small class="text-muted-light">PDF, DOC, DOCX — Max 5MB</small>
+          <input type="file" id="resumeFile" accept=".pdf,.doc,.docx" class="d-none" onchange="showFileName(this)">
+          <div id="fileNameDisplay" class="mt-2 text-primary fw-600 fs-sm"></div>
+        </div>
+
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label-dark">Password *</label>
+            <input type="password" id="regPwd" class="form-control-dark" placeholder="Min 8 characters">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label-dark">Confirm Password *</label>
+            <input type="password" id="regPwd2" class="form-control-dark" placeholder="Repeat password">
+          </div>
+          <div class="col-12">
+            <div id="pwdStrength" class="mt-1"></div>
+          </div>
+          <div class="col-12">
+            <label class="d-flex align-items-start gap-2 cursor-pointer">
+              <input type="checkbox" class="mt-1">
+              <span class="text-muted-light fs-sm">I agree to the <a href="#" class="text-primary">Terms of Service</a> and <a href="#" class="text-primary">Privacy Policy</a>. I understand this is a template demo.</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="notice-box info mt-3 fs-sm">
+          <i class="bi bi-lightning-charge-fill text-warning me-1"></i>
+          <strong>Pro Tip:</strong> After registering, take our online aptitude test. Score above 70% to unlock <strong>FREE</strong> internship opportunities!
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+          <button class="btn btn-outline-light-grad px-4" onclick="goStep(2)"><i class="bi bi-arrow-left me-2"></i> Back</button>
+          <button onclick="submitRegistration()" class="btn btn-success-grad px-5 fw-bold">
+            <i class="bi bi-check2-circle me-2"></i> Complete Registration
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-center text-muted-light mt-4 fs-sm">Already have an account? <a href="login.html" class="text-primary text-decoration-none">Sign in here</a></p>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function goStep(n) {
+    [1,2,3].forEach(i => {
+      document.getElementById('step'+i).classList.toggle('active', i===n);
+      const dot = document.getElementById('dot'+i);
+      dot.classList.toggle('active', i===n);
+      if(i < n) { dot.classList.add('done'); dot.innerHTML='<i class="bi bi-check-lg"></i>'; }
+      if(i > n) { dot.classList.remove('done','active'); dot.innerHTML=i; }
+    });
+    if(document.getElementById('line1')) document.getElementById('line1').classList.toggle('done', n>1);
+    if(document.getElementById('line2')) document.getElementById('line2').classList.toggle('done', n>2);
+  }
+  function toggleSkill(el) { el.classList.toggle('selected'); }
+  function showFileName(input) {
+    const name = input.files[0]?.name;
+    if(name) document.getElementById('fileNameDisplay').textContent = '✓ ' + name;
+  }
+  document.getElementById('regPwd')?.addEventListener('input', function(){
+    const v = this.value, el = document.getElementById('pwdStrength');
+    let strength = 0, msg = '', cls = '';
+    if(v.length >= 8) strength++;
+    if(/[A-Z]/.test(v)) strength++;
+    if(/[0-9]/.test(v)) strength++;
+    if(/[^A-Za-z0-9]/.test(v)) strength++;
+    if(strength<=1){msg='Weak';cls='text-danger';}
+    else if(strength===2){msg='Fair';cls='text-warning';}
+    else if(strength===3){msg='Good';cls='text-info';}
+    else{msg='Strong 💪';cls='text-success';}
+    el.innerHTML = v ? `<small class="${cls} fw-600">Password strength: ${msg}</small>` : '';
+  });
+
+  function submitRegistration() {
+    const fullName = document.getElementById('fullName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phoneInput = document.querySelector('input[placeholder="98765 43210"]');
+    const phone = phoneInput ? phoneInput.value.trim() : '';
+    const dobInput = document.querySelector('input[type="date"]');
+    const dob = dobInput ? dobInput.value : '';
+    const genderEl = document.querySelector('input[name="gender"]:checked');
+    const gender = genderEl ? genderEl.value : 'Male';
+
+    const collegeInput = document.querySelector('input[placeholder="e.g. IIT Bombay"]');
+    const college = collegeInput ? collegeInput.value.trim() : '';
+    const degreeInput = document.querySelector('input[placeholder="e.g. B.Tech Computer Science"]');
+    const degree = degreeInput ? degreeInput.value.trim() : '';
+    const yearSelect = document.querySelector('#step2 select');
+    const year = yearSelect ? yearSelect.value : '1st Year';
+    const cgpaInput = document.querySelector('input[placeholder*="CGPA"]');
+    const cgpa = cgpaInput ? cgpaInput.value.trim() : 'N/A';
+
+    const skills = Array.from(document.querySelectorAll('.skill-pill.selected')).map(el => el.textContent);
+    const resumeDisplay = document.getElementById('fileNameDisplay').textContent;
+    const resumeName = resumeDisplay ? resumeDisplay.replace('✓ ', '') : 'resume.pdf';
+
+    const pwd = document.getElementById('regPwd').value;
+    const pwd2 = document.getElementById('regPwd2').value;
+
+    if (!fullName || !email || !pwd) {
+      alert("Please fill in all required fields (Name, Email, Password).");
+      return;
+    }
+    if (pwd !== pwd2) {
+      alert("Passwords do not match!");
+      return;
+    }
+
+    // Build user object
+    const newUser = {
+      id: "student_" + Date.now(),
+      fullName,
+      email,
+      phone: "+91 " + phone,
+      dob,
+      gender,
+      college,
+      degree,
+      year,
+      cgpa,
+      skills: skills.length ? skills : ["Communication"],
+      resumeName,
+      photo: "https://i.pravatar.cc/150?u=" + encodeURIComponent(email),
+      paymentStatus: "Pending", // Direct to payment page
+      score: 0,
+      status: "Registered",
+      appliedJobs: [],
+      appliedAt: ""
+    };
+
+    // Save to simulated database
+    let allStudents = JSON.parse(localStorage.getItem('allStudents') || '[]');
+    allStudents.push(newUser);
+    localStorage.setItem('allStudents', JSON.stringify(allStudents));
+    localStorage.setItem('currentUser', JSON.stringify(newUser));
+
+    // Redirect to payment.html
+    window.location.href = "payment.html";
+  }
+</script>
+    <!-- Theme Toggle -->
+    <script src="js/theme.js"></script>
+</body>
+</html>
+

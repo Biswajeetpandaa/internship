@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reviews & Testimonials - InternHub</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <style>
+    .rating-bar { display: flex; align-items: center; gap: .75rem; margin-bottom: .5rem; }
+    .rating-bar-track { flex: 1; height: 6px; background: rgba(255,255,255,.08); border-radius: 3px; overflow: hidden; }
+    .rating-bar-fill { height: 100%; background: var(--gradient-warm); border-radius: 3px; }
+    .big-rating { font-size: 5rem; font-weight: 900; background: var(--gradient-warm); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
+    .swiper-review .swiper-slide { padding: 1rem; }
+    .story-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-md); padding: 2rem; transition: var(--transition); height: 100%; }
+    .story-card:hover { border-color: rgba(102,126,234,.5); transform: translateY(-5px); box-shadow: var(--shadow-md); }
+    .reviewer-img { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); }
+    .quote-icon { font-size: 3rem; color: var(--primary); opacity: .3; line-height: 1; margin-bottom: .5rem; }
+    .platform-rating { display: flex; flex-direction: column; align-items: center; padding: 1.5rem; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-md); }
+  </style>
+</head>
+<body class="pt-navbar" style="background:var(--dark2)">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Intern<span style="-webkit-text-fill-color:var(--accent)">Hub</span></a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav"><i class="bi bi-list fs-1 text-light"></i></button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="internships.html">Internships</a></li>
+          <li class="nav-item"><a class="nav-link" href="learning_resources.html">Learning</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link active" href="reviews.html">Reviews</a></li>
+        </ul>
+        <div class="d-flex gap-3 mt-3 mt-lg-0">
+          <a href="login.html" class="text-light text-decoration-none fw-medium">Login</a>
+          <a href="register.html" class="btn btn-primary-grad">Register Free</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="section-sm bg-dark-grad border-bottom border-glass">
+    <div class="container text-center">
+      <span class="section-badge">Testimonials</span>
+      <h1 class="section-title mb-2">What Our <span class="gradient-text">Students Say</span></h1>
+      <p class="text-muted-light mx-auto" style="max-width:550px">Hear directly from students who have transformed their careers through InternHub.</p>
+    </div>
+  </section>
+
+  <div class="container py-5">
+    <!-- Aggregate Rating -->
+    <div class="row g-4 mb-5 align-items-center">
+      <div class="col-md-4 text-center">
+        <div class="big-rating">4.8</div>
+        <div class="d-flex justify-content-center mb-2">
+          <i class="bi bi-star-fill star-filled fs-4"></i><i class="bi bi-star-fill star-filled fs-4"></i>
+          <i class="bi bi-star-fill star-filled fs-4"></i><i class="bi bi-star-fill star-filled fs-4"></i>
+          <i class="bi bi-star-half star-filled fs-4"></i>
+        </div>
+        <p class="text-muted-light">Based on <strong class="text-white">3,842</strong> reviews</p>
+      </div>
+      <div class="col-md-4">
+        <div class="rating-bar"><span class="fs-sm" style="width:12px">5</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:78%"></div></div><span class="text-muted-light fs-sm">78%</span></div>
+        <div class="rating-bar"><span class="fs-sm" style="width:12px">4</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:15%"></div></div><span class="text-muted-light fs-sm">15%</span></div>
+        <div class="rating-bar"><span class="fs-sm" style="width:12px">3</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:5%"></div></div><span class="text-muted-light fs-sm">5%</span></div>
+        <div class="rating-bar"><span class="fs-sm" style="width:12px">2</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:1%"></div></div><span class="text-muted-light fs-sm">1%</span></div>
+        <div class="rating-bar"><span class="fs-sm" style="width:12px">1</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:1%"></div></div><span class="text-muted-light fs-sm">1%</span></div>
+      </div>
+      <div class="col-md-4">
+        <div class="row g-3">
+          <div class="col-6"><div class="platform-rating"><div class="fs-3 fw-bold text-success">4.9</div><small class="text-muted-light">Google</small></div></div>
+          <div class="col-6"><div class="platform-rating"><div class="fs-3 fw-bold text-primary">4.8</div><small class="text-muted-light">LinkedIn</small></div></div>
+          <div class="col-6"><div class="platform-rating"><div class="fs-3 fw-bold" style="color:#f6d365">4.7</div><small class="text-muted-light">Trustpilot</small></div></div>
+          <div class="col-6"><div class="platform-rating"><div class="fs-3 fw-bold" style="color:#f093fb">4.8</div><small class="text-muted-light">Glassdoor</small></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Swiper Reviews Carousel -->
+    <h4 class="fw-bold mb-4">Student Reviews</h4>
+    <div class="swiper swiper-review mb-5">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="story-card">
+            <div class="quote-icon">"</div>
+            <p class="text-light opacity-85 fst-italic mb-4">"InternHub completely transformed my career path. The online test helped me secure a FREE internship at a top tech firm. The dashboard and chatbot support are amazing!"</p>
+            <div class="d-flex align-items-center gap-3">
+              <img src="https://i.pravatar.cc/150?img=32" alt="Sarah" class="reviewer-img">
+              <div>
+                <div class="fw-bold">Sarah Jenkins</div>
+                <div class="text-muted-light fs-sm">Frontend Developer Intern · IIT Bombay</div>
+                <div class="mt-1"><i class="bi bi-star-fill star-filled"></i><i class="bi bi-star-fill star-filled"></i><i class="bi bi-star-fill star-filled"></i><i class="bi bi-star-fill star-filled"></i><i class="bi bi-star-fill star-filled"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="story-card">
+            <div class="quote-icon">"</div>
+            <p class="text-light opacity-85 fst-italic mb-4">"Got shortlisted for 2 companies within a week! The learning resources are top-notch and the platform UI is beautiful. Highly recommended for all CS students."</p>
+            <div class="d-flex align-items-center gap-3">
+              <img src="https://i.pravatar.cc/150?img=11" alt="Rahul" class="reviewer-img">
+              <div>
+                <div class="fw-bold">Rahul Sharma</div>
+                <div class="text-muted-light fs-sm">Marketing Intern · NIT Trichy</div>
+                <div class="mt-1"><i class="bi bi-star-fill star-filled"></i><i class="bi bi-star-fill star-filled"></i><i class="bi bi-star-fill star-filled"></i><i class="bi bi-star-fill star-filled"></i><i class="bi bi-star-half star-filled"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="story-card">
+            <div class="quote-icon">"</div>
+            <p class="text-light opacity-85 fst-italic mb-4">"The chatbot solved my payment query instantly and the certificate I received was recognized by my university. This platform is a game-changer for fresh graduates!"</p>
+            <div class="d-flex align-items-center gap-3">
+              <img src="https://i.pravatar.cc/150?img=5" alt="Priya" class="reviewer-img">
+              <div>
+                <div class="fw-bold">Priya Patel</div>
+                <div class="text-muted-light fs-sm">HR Intern · BITS Pilani</div>
+                <div class="mt-1"><i class="bi bi-star-fill star-filled"></i><i class="bi bi-star-fill star-filled"></i><i class="bi bi-star-fill star-filled"></i><i class="bi bi-star-fill star-filled"></i><i class="bi bi-star-fill star-filled"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="story-card">
+            <div class="quote-icon">"</div>
+            <p class="text-light opacity-85 fst-italic mb-4">"I scored 88% in the aptitude test and got a FREE 3-month internship at a digital marketing startup. The best decision of my college life. Thank you InternHub!"</p>
+            <div class="d-flex align-items-center gap-3">
+              <img src="https://i.pravatar.cc/150?img=20" alt="Meera" class="reviewer-img">
+              <div>
+                <div class="fw-bold">Meera Krishnan</div>
+                <div class="text-muted-light fs-sm">Digital Marketing Intern · VIT Vellore</div>
+                <div class="mt-1"><i class="bi bi-star-fill star-filled"></i><i class="bi bi-star-fill star-filled"></i><i class="bi bi-star-fill star-filled"></i><i class="bi bi-star-fill star-filled"></i><i class="bi bi-star-fill star-filled"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="story-card">
+            <div class="quote-icon">"</div>
+            <p class="text-light opacity-85 fst-italic mb-4">"The resume building resources and mock interview prep on InternHub gave me the confidence to face real interviews. Got placed in a Fortune 500 company after my internship!"</p>
+            <div class="d-flex align-items-center gap-3">
+              <img src="https://i.pravatar.cc/150?img=15" alt="Arjun" class="reviewer-img">
+              <div>
+                <div class="fw-bold">Arjun Singh</div>
+                <div class="text-muted-light fs-sm">Data Science Intern · IIT Delhi</div>
+                <div class="mt-1"><i class="bi bi-star-fill star-filled"></i><i class="bi bi-star-fill star-filled"></i><i class="bi bi-star-fill star-filled"></i><i class="bi bi-star-fill star-filled"></i><i class="bi bi-star-half star-filled"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination mt-4 position-relative"></div>
+    </div>
+
+    <!-- Success Stories -->
+    <h4 class="fw-bold mb-4">🏆 Success Stories</h4>
+    <div class="row g-4">
+      <div class="col-md-4" data-anim="fade-up" data-delay="0">
+        <div class="glass-card p-4 text-center hover-glow">
+          <img src="https://i.pravatar.cc/150?img=32" alt="Sarah" class="reviewer-img mb-3" style="width:80px;height:80px">
+          <h5 class="fw-bold mb-1">Sarah Jenkins</h5>
+          <p class="text-primary fs-sm mb-2">Now: Junior Frontend Dev at Google</p>
+          <p class="text-muted-light fs-sm">"Started with a 6-month React internship found on InternHub. Got a PPO (Pre-Placement Offer) and joined full-time at ₹18 LPA."</p>
+          <div class="d-flex justify-content-center gap-2 mt-3 flex-wrap">
+            <span class="skill-tag">React.js</span><span class="skill-tag">TypeScript</span><span class="skill-tag">Node.js</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-anim="fade-up" data-delay="1">
+        <div class="glass-card p-4 text-center hover-glow">
+          <img src="https://i.pravatar.cc/150?img=11" alt="Rahul" class="reviewer-img mb-3" style="width:80px;height:80px;border-color:#f093fb">
+          <h5 class="fw-bold mb-1">Rahul Sharma</h5>
+          <p class="fs-sm mb-2" style="color:#f093fb">Now: Digital Marketing Lead at Swiggy</p>
+          <p class="text-muted-light fs-sm">"The marketing internship I got through InternHub directly led to a full-time role. The certificate was recognized during my interview."</p>
+          <div class="d-flex justify-content-center gap-2 mt-3 flex-wrap">
+            <span class="skill-tag">SEO</span><span class="skill-tag">Performance Marketing</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-anim="fade-up" data-delay="2">
+        <div class="glass-card p-4 text-center hover-glow">
+          <img src="https://i.pravatar.cc/150?img=5" alt="Priya" class="reviewer-img mb-3" style="width:80px;height:80px;border-color:#43e97b">
+          <h5 class="fw-bold mb-1">Priya Patel</h5>
+          <p class="text-success fs-sm mb-2">Now: HR Business Partner at Infosys</p>
+          <p class="text-muted-light fs-sm">"Got my FREE internship by scoring 91% in the aptitude test! The experience I gained during those 3 months was invaluable."</p>
+          <div class="d-flex justify-content-center gap-2 mt-3 flex-wrap">
+            <span class="skill-tag">Talent Acquisition</span><span class="skill-tag">HRBP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="glass-card p-5 text-center mt-5" style="background:linear-gradient(135deg,rgba(102,126,234,.15),rgba(118,75,162,.1))">
+      <h3 class="fw-bold mb-3">Ready to Write Your Own Success Story?</h3>
+      <p class="text-muted-light mb-4">Join 15,000+ students who've already launched their careers with InternHub.</p>
+      <a href="register.html" class="btn btn-primary-grad btn-lg px-5 me-2 ripple-btn">Get Started Free</a>
+      <a href="online_test.html" class="btn btn-outline-light-grad btn-lg px-5">Take Skill Test</a>
+    </div>
+  </div>
+
+  <!-- Chatbot -->
+  <button id="chatbotFab" class="chatbot-fab ripple-btn"><i class="bi bi-chat-dots-fill"></i></button>
+  <div id="chatbotWindow" class="chatbot-window">
+    <div class="chatbot-header"><div class="chatbot-avatar"><i class="bi bi-robot"></i></div><div><div class="fw-bold">InternHub Assistant</div><small class="text-light opacity-75">Online</small></div><button id="chatbotClose" class="btn btn-sm text-light ms-auto p-0"><i class="bi bi-x-lg"></i></button></div>
+    <div id="chatMessages" class="chatbot-messages"><div class="chat-msg bot">Inspired by our students? Start your journey today!</div></div>
+    <div class="chatbot-quick-btns"><button class="quick-btn">How to apply?</button><button class="quick-btn">Take test</button><button class="quick-btn">Payment</button></div>
+    <div class="chatbot-input-row"><input type="text" id="chatInput" class="chatbot-input" placeholder="Ask me anything..."><button id="chatSend" class="chatbot-send"><i class="bi bi-send-fill"></i></button></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    new Swiper('.swiper-review', {
+      slidesPerView: 1, spaceBetween: 24, loop: true, autoplay: { delay: 4000, disableOnInteraction: false },
+      pagination: { el: '.swiper-pagination', clickable: true },
+      breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+    });
+  </script>
+    <!-- Theme Toggle -->
+    <script src="js/theme.js"></script>
+</body>
+</html>
+

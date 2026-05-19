@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frontend Developer Intern - Tech Innovators - InternHub</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <style>
+    .detail-header { background: linear-gradient(135deg, rgba(102,126,234,.15), rgba(118,75,162,.1)); border-bottom: 1px solid var(--card-border); padding: 3rem 0 2rem; }
+    .company-logo-lg { width: 80px; height: 80px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 900; color: #fff; }
+    .apply-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-md); padding: 1.8rem; backdrop-filter: blur(12px); position: sticky; top: 90px; }
+    .detail-section { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-md); padding: 2rem; backdrop-filter: blur(12px); margin-bottom: 1.5rem; }
+    .section-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; margin-bottom: .75rem; }
+    .benefit-item { display: flex; align-items: flex-start; gap: .75rem; padding: .6rem 0; border-bottom: 1px solid rgba(255,255,255,.04); }
+    .benefit-item:last-child { border-bottom: none; }
+    .company-stat { text-align: center; padding: .75rem; background: rgba(255,255,255,.04); border-radius: var(--radius-sm); }
+    .deadline-bar { height: 6px; background: linear-gradient(to right, #43e97b, #f6d365, #f5576c); border-radius: 3px; overflow: hidden; }
+    .deadline-fill { height: 100%; background: rgba(255,255,255,.3); float: right; border-radius: 0 3px 3px 0; }
+  </style>
+</head>
+<body class="pt-navbar" style="background:var(--dark2)">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Intern<span style="-webkit-text-fill-color:var(--accent)">Hub</span></a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <i class="bi bi-list fs-1 text-light"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="internships.html">Internships</a></li>
+          <li class="nav-item"><a class="nav-link" href="learning_resources.html">Learning</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+        <div class="d-flex gap-3 mt-3 mt-lg-0">
+          <a href="login.html" class="text-light text-decoration-none fw-medium">Login</a>
+          <a href="register.html" class="btn btn-primary-grad">Register</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="container pt-4">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html" class="text-primary text-decoration-none">Home</a></li>
+        <li class="breadcrumb-item"><a href="internships.html" class="text-primary text-decoration-none">Internships</a></li>
+        <li class="breadcrumb-item active text-muted-light">Frontend Developer Intern</li>
+      </ol>
+    </nav>
+  </div>
+
+  <!-- Detail Header -->
+  <section class="detail-header">
+    <div class="container">
+      <div class="d-flex align-items-start gap-4 flex-wrap">
+        <div class="company-logo-lg bg-primary-gradient">T</div>
+        <div class="flex-grow-1">
+          <h1 class="section-title mb-1" style="font-size:1.9rem">Frontend Developer Intern</h1>
+          <p class="text-muted-light fs-5 mb-3">Tech Innovators Inc.</p>
+          <div class="d-flex flex-wrap gap-3 align-items-center">
+            <span class="badge-remote"><i class="bi bi-globe me-1"></i> Remote</span>
+            <span class="badge-paid"><i class="bi bi-cash me-1"></i> ?15,000/month</span>
+            <span class="skill-tag"><i class="bi bi-clock me-1"></i> 6 Months</span>
+            <span class="skill-tag"><i class="bi bi-people me-1"></i> 5 Openings</span>
+            <span class="text-muted-light fs-sm"><i class="bi bi-calendar3 me-1"></i> Posted 2 days ago</span>
+          </div>
+        </div>
+        <div class="d-flex gap-2 mt-3 mt-md-0">
+          <button class="btn btn-outline-light-grad"><i class="bi bi-share me-2"></i>Share</button>
+          <button class="btn btn-outline-light-grad"><i class="bi bi-bookmark me-1"></i>Save</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container py-4">
+    <div class="row g-4">
+      <!-- Main Content -->
+      <div class="col-lg-8">
+
+        <!-- About the Role -->
+        <div class="detail-section">
+          <div class="section-icon bg-primary bg-opacity-10 text-primary"><i class="bi bi-briefcase-fill"></i></div>
+          <h4 class="fw-bold mb-3">About the Role</h4>
+          <p class="text-muted-light">Join our dynamic frontend team as an intern and work on real projects that impact millions of users. You'll collaborate with senior engineers, designers, and product managers to build stunning, performant web applications.</p>
+          <p class="text-muted-light mb-0">This is a paid remote internship with flexible hours, ideal for students in their 2nd or 3rd year of B.Tech/BCA/MCA programs with a passion for modern web development.</p>
+        </div>
+
+        <!-- Responsibilities -->
+        <div class="detail-section">
+          <div class="section-icon" style="background:rgba(240,147,251,.1);color:#f093fb"><i class="bi bi-list-check"></i></div>
+          <h4 class="fw-bold mb-3">Responsibilities</h4>
+          <ul class="list-unstyled text-muted-light">
+            <li class="benefit-item"><i class="bi bi-arrow-right-circle-fill text-primary mt-1 flex-shrink-0"></i><span>Develop responsive UI components using React.js and modern CSS</span></li>
+            <li class="benefit-item"><i class="bi bi-arrow-right-circle-fill text-primary mt-1 flex-shrink-0"></i><span>Collaborate with the design team to implement pixel-perfect interfaces</span></li>
+            <li class="benefit-item"><i class="bi bi-arrow-right-circle-fill text-primary mt-1 flex-shrink-0"></i><span>Optimize web applications for maximum speed and scalability</span></li>
+            <li class="benefit-item"><i class="bi bi-arrow-right-circle-fill text-primary mt-1 flex-shrink-0"></i><span>Write clean, reusable, and well-documented code</span></li>
+            <li class="benefit-item"><i class="bi bi-arrow-right-circle-fill text-primary mt-1 flex-shrink-0"></i><span>Participate in daily standups and weekly sprint reviews</span></li>
+          </ul>
+        </div>
+
+        <!-- Requirements -->
+        <div class="detail-section">
+          <div class="section-icon" style="background:rgba(67,233,123,.1);color:#43e97b"><i class="bi bi-person-check-fill"></i></div>
+          <h4 class="fw-bold mb-3">Requirements</h4>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <h6 class="fw-600 text-light mb-2">Must Have</h6>
+              <ul class="list-unstyled text-muted-light fs-sm">
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Proficiency in HTML5, CSS3, JavaScript</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Basic knowledge of React.js</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Familiarity with Git version control</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Currently enrolled in B.Tech/BCA/MCA</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <h6 class="fw-600 text-light mb-2">Good to Have</h6>
+              <ul class="list-unstyled text-muted-light fs-sm">
+                <li class="mb-2"><i class="bi bi-plus-circle-fill text-primary me-2"></i>Knowledge of Bootstrap / Tailwind</li>
+                <li class="mb-2"><i class="bi bi-plus-circle-fill text-primary me-2"></i>Experience with REST APIs</li>
+                <li class="mb-2"><i class="bi bi-plus-circle-fill text-primary me-2"></i>Figma / Design tool experience</li>
+                <li class="mb-2"><i class="bi bi-plus-circle-fill text-primary me-2"></i>Prior project portfolio / GitHub</li>
+              </ul>
+            </div>
+          </div>
+          <div class="mt-3">
+            <h6 class="fw-600 text-light mb-2">Skills Required</h6>
+            <div>
+              <span class="skill-tag">React.js</span><span class="skill-tag">CSS3</span>
+              <span class="skill-tag">Bootstrap</span><span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">Git</span><span class="skill-tag">Responsive Design</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Benefits -->
+        <div class="detail-section">
+          <div class="section-icon" style="background:rgba(246,211,101,.1);color:#f6d365"><i class="bi bi-gift-fill"></i></div>
+          <h4 class="fw-bold mb-3">Perks & Benefits</h4>
+          <div class="row g-3">
+            <div class="col-md-6"><div class="benefit-item"><i class="bi bi-cash-coin text-success fs-5 flex-shrink-0"></i><div><div class="fw-600">?15,000/month Stipend</div><small class="text-muted-light">Paid monthly</small></div></div></div>
+            <div class="col-md-6"><div class="benefit-item"><i class="bi bi-patch-check-fill text-primary fs-5 flex-shrink-0"></i><div><div class="fw-600">Verified Certificate</div><small class="text-muted-light">Industry-recognized</small></div></div></div>
+            <div class="col-md-6"><div class="benefit-item"><i class="bi bi-person-workspace text-info fs-5 flex-shrink-0"></i><div><div class="fw-600">Work from Anywhere</div><small class="text-muted-light">100% remote</small></div></div></div>
+            <div class="col-md-6"><div class="benefit-item"><i class="bi bi-book text-warning fs-5 flex-shrink-0"></i><div><div class="fw-600">Learning Resources</div><small class="text-muted-light">Access to premium courses</small></div></div></div>
+            <div class="col-md-6"><div class="benefit-item"><i class="bi bi-person-lines-fill text-accent fs-5 flex-shrink-0"></i><div><div class="fw-600">Mentorship</div><small class="text-muted-light">1-on-1 with senior dev</small></div></div></div>
+            <div class="col-md-6"><div class="benefit-item"><i class="bi bi-linkedin text-info fs-5 flex-shrink-0"></i><div><div class="fw-600">LinkedIn Recommendation</div><small class="text-muted-light">After successful completion</small></div></div></div>
+          </div>
+        </div>
+
+        <!-- About Company -->
+        <div class="detail-section">
+          <div class="section-icon bg-primary bg-opacity-10 text-primary"><i class="bi bi-buildings-fill"></i></div>
+          <h4 class="fw-bold mb-3">About Tech Innovators Inc.</h4>
+          <p class="text-muted-light mb-4">Tech Innovators Inc. is a leading SaaS startup founded in 2018, focused on building next-generation productivity tools for remote teams. With 200+ employees across 15 countries, we've helped over 50,000 businesses streamline their workflows.</p>
+          <div class="row g-3">
+            <div class="col-4"><div class="company-stat"><div class="fw-bold fs-4 gradient-text">200+</div><div class="text-muted-light fs-xs">Employees</div></div></div>
+            <div class="col-4"><div class="company-stat"><div class="fw-bold fs-4 gradient-text">50K+</div><div class="text-muted-light fs-xs">Customers</div></div></div>
+            <div class="col-4"><div class="company-stat"><div class="fw-bold fs-4 gradient-text">15</div><div class="text-muted-light fs-xs">Countries</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Apply Sidebar -->
+      <div class="col-lg-4">
+        <div class="apply-card">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div><div class="stat-number" style="font-size:1.8rem">?15,000</div><div class="text-muted-light fs-sm">per month stipend</div></div>
+            <div class="text-center"><div class="fw-bold text-success">5 Left</div><div class="text-muted-light fs-xs">Openings</div></div>
+          </div>
+
+          <div class="mb-3">
+            <div class="d-flex justify-content-between mb-1 fs-sm">
+              <span class="text-muted-light">Application deadline</span>
+              <span class="text-warning fw-600">8 days left</span>
+            </div>
+            <div class="deadline-bar"><div class="deadline-fill" style="width:60%"></div></div>
+          </div>
+
+          <ul class="list-unstyled text-muted-light fs-sm mb-4">
+            <li class="mb-2 d-flex align-items-center gap-2"><i class="bi bi-calendar3 text-primary"></i>Start: June 1, 2026</li>
+            <li class="mb-2 d-flex align-items-center gap-2"><i class="bi bi-clock text-primary"></i>Duration: 6 Months</li>
+            <li class="mb-2 d-flex align-items-center gap-2"><i class="bi bi-laptop text-primary"></i>Mode: Remote</li>
+            <li class="mb-2 d-flex align-items-center gap-2"><i class="bi bi-mortarboard text-primary"></i>B.Tech/BCA/MCA (2nd-4th yr)</li>
+          </ul>
+
+          <a href="register.html" class="btn btn-primary-grad w-100 py-3 fw-bold mb-3 ripple-btn">
+            <i class="bi bi-send-fill me-2"></i>Apply Now
+          </a>
+          <button class="btn btn-outline-light-grad w-100 mb-3">
+            <i class="bi bi-bookmark me-2"></i>Save for Later
+          </button>
+
+          <div class="notice-box info fs-sm text-center">
+            <i class="bi bi-shield-check me-1"></i> Apply via InternHub for faster processing
+          </div>
+
+          <hr class="border-glass my-3">
+          <h6 class="fw-bold mb-3 fs-sm">Share this opportunity</h6>
+          <div class="d-flex gap-2">
+            <a href="#" class="topbar-icon-btn"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="topbar-icon-btn"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="topbar-icon-btn"><i class="bi bi-whatsapp"></i></a>
+            <a href="#" class="topbar-icon-btn"><i class="bi bi-link-45deg"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chatbot -->
+  <button id="chatbotFab" class="chatbot-fab ripple-btn"><i class="bi bi-chat-dots-fill"></i></button>
+  <div id="chatbotWindow" class="chatbot-window">
+    <div class="chatbot-header">
+      <div class="chatbot-avatar"><i class="bi bi-robot"></i></div>
+      <div><div class="fw-bold">InternHub Assistant</div><small class="text-light opacity-75">Online</small></div>
+      <button id="chatbotClose" class="btn btn-sm text-light ms-auto p-0"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div id="chatMessages" class="chatbot-messages">
+      <div class="chat-msg bot">Interested in this internship? I can help you prepare your application or answer questions!</div>
+    </div>
+    <div class="chatbot-quick-btns">
+      <button class="quick-btn">How to apply?</button>
+      <button class="quick-btn">Certificate</button>
+      <button class="quick-btn">Contact</button>
+    </div>
+    <div class="chatbot-input-row">
+      <input type="text" id="chatInput" class="chatbot-input" placeholder="Ask me anything...">
+      <button id="chatSend" class="chatbot-send"><i class="bi bi-send-fill"></i></button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+    <!-- Theme Toggle -->
+    <script src="js/theme.js"></script>
+</body>
+</html>
+

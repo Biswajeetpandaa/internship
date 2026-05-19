@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse Internships - InternHub</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <style>
+    .filter-sidebar { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-md); padding: 1.5rem; backdrop-filter: blur(12px); position: sticky; top: 90px; }
+    .filter-group { margin-bottom: 1.5rem; }
+    .filter-group-title { font-size: .78rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: .75rem; }
+    .filter-check { display: flex; align-items: center; gap: .6rem; padding: .3rem 0; cursor: pointer; font-size: .88rem; color: var(--text-light); }
+    .filter-check input { accent-color: var(--primary); width: 16px; height: 16px; }
+    .sort-bar { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-md); padding: 1rem 1.5rem; backdrop-filter: blur(12px); }
+    .result-count { font-size: .9rem; font-weight: 600; }
+    .filter-btn { background: rgba(255,255,255,0.05); border: 1px solid var(--card-border); color: var(--text-light); border-radius: 50px; padding: .35rem 1rem; font-size: .8rem; cursor: pointer; transition: var(--transition); }
+    .filter-btn:hover, .filter-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+    .range-input { -webkit-appearance: none; appearance: none; height: 4px; background: linear-gradient(to right, var(--primary) 0%, var(--primary) 60%, rgba(255,255,255,.1) 60%); border-radius: 2px; width: 100%; outline: none; }
+    .range-input::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--primary); cursor: pointer; border: 2px solid var(--dark2); }
+    .pagination-custom .page-link { background: var(--card-bg); border-color: var(--card-border); color: var(--text-light); border-radius: var(--radius-sm); margin: 0 2px; }
+    .pagination-custom .page-link:hover { background: rgba(102,126,234,.2); border-color: var(--primary); color: #fff; }
+    .pagination-custom .page-item.active .page-link { background: var(--gradient-primary); border-color: var(--primary); color: #fff; }
+  </style>
+</head>
+<body class="pt-navbar" style="background:var(--dark2)">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Intern<span style="-webkit-text-fill-color:var(--accent)">Hub</span></a>
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <i class="bi bi-list fs-1 text-light"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="internships.html">Internships</a></li>
+          <li class="nav-item"><a class="nav-link" href="learning_resources.html">Learning</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+          <a href="login.html" class="text-light text-decoration-none fw-medium">Login</a>
+          <a href="register.html" class="btn btn-primary-grad ripple-btn">Register Free</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="section-sm bg-dark-grad border-bottom border-glass">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h1 class="section-title mb-1">Browse <span class="gradient-text">Internships</span></h1>
+          <p class="text-muted-light">Showing <strong class="text-white">2,500+</strong> opportunities across all categories</p>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex gap-2 flex-wrap justify-content-md-end mt-3 mt-md-0">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Remote</button>
+            <button class="filter-btn">Paid</button>
+            <button class="filter-btn">Trending</button>
+            <button class="filter-btn">New</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container py-4">
+    <div class="row g-4">
+      <!-- Filter Sidebar -->
+      <div class="col-lg-3">
+        <div class="filter-sidebar">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6 class="fw-bold mb-0"><i class="bi bi-funnel me-2 text-primary"></i>Filters</h6>
+            <button class="btn btn-link text-primary p-0 fs-sm text-decoration-none">Clear All</button>
+          </div>
+
+          <!-- Category -->
+          <div class="filter-group">
+            <div class="filter-group-title">Category</div>
+            <label class="filter-check"><input type="checkbox" checked> Technical <span class="ms-auto text-muted-light">450</span></label>
+            <label class="filter-check"><input type="checkbox"> Marketing <span class="ms-auto text-muted-light">320</span></label>
+            <label class="filter-check"><input type="checkbox"> Management <span class="ms-auto text-muted-light">210</span></label>
+            <label class="filter-check"><input type="checkbox"> HR <span class="ms-auto text-muted-light">180</span></label>
+            <label class="filter-check"><input type="checkbox"> Social Work <span class="ms-auto text-muted-light">150</span></label>
+            <label class="filter-check"><input type="checkbox"> Volunteer <span class="ms-auto text-muted-light">95</span></label>
+          </div>
+
+          <!-- Duration -->
+          <div class="filter-group">
+            <div class="filter-group-title">Duration</div>
+            <label class="filter-check"><input type="checkbox" checked> 1 Month</label>
+            <label class="filter-check"><input type="checkbox" checked> 2-3 Months</label>
+            <label class="filter-check"><input type="checkbox"> 4-6 Months</label>
+            <label class="filter-check"><input type="checkbox"> 6+ Months</label>
+          </div>
+
+          <!-- Stipend -->
+          <div class="filter-group">
+            <div class="filter-group-title">Stipend Type</div>
+            <label class="filter-check"><input type="checkbox" checked> Paid</label>
+            <label class="filter-check"><input type="checkbox"> Unpaid</label>
+            <label class="filter-check"><input type="checkbox"> Performance-based</label>
+          </div>
+
+          <!-- Mode -->
+          <div class="filter-group">
+            <div class="filter-group-title">Work Mode</div>
+            <label class="filter-check"><input type="checkbox" checked> Remote</label>
+            <label class="filter-check"><input type="checkbox"> On-site</label>
+            <label class="filter-check"><input type="checkbox"> Hybrid</label>
+          </div>
+
+          <!-- Stipend Range -->
+          <div class="filter-group">
+            <div class="filter-group-title">Stipend Range</div>
+            <input type="range" class="range-input mb-2" min="0" max="50000" value="30000" id="stipendRange"
+              oninput="document.getElementById('stipendVal').textContent='₹'+this.value.toLocaleString()">
+            <div class="d-flex justify-content-between text-muted-light fs-sm">
+              <span>₹0</span>
+              <span id="stipendVal" class="text-primary fw-600">₹30,000</span>
+              <span>₹50k</span>
+            </div>
+          </div>
+
+          <button class="btn btn-primary-grad w-100">Apply Filters</button>
+        </div>
+      </div>
+
+      <!-- Cards Grid -->
+      <div class="col-lg-9">
+        <!-- Sort Bar -->
+        <div class="sort-bar d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
+          <span class="result-count"><span class="text-grad">2,456</span> internships found</span>
+          <div class="d-flex align-items-center gap-3">
+            <label class="text-muted-light fs-sm">Sort by:</label>
+            <select class="form-control-dark py-1 px-2" style="width:auto;font-size:.85rem">
+              <option>Most Relevant</option>
+              <option>Newest First</option>
+              <option>Highest Stipend</option>
+              <option>Shortest Duration</option>
+            </select>
+            <div class="d-flex gap-2">
+              <button class="topbar-icon-btn active" title="Grid View"><i class="bi bi-grid-3x3-gap"></i></button>
+              <button class="topbar-icon-btn" title="List View"><i class="bi bi-list-ul"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cards -->
+        <div class="row g-4" id="internshipGrid">
+          <!-- Card Template (repeated 6 times) -->
+          <div class="col-md-6 col-xl-4" data-anim="fade-up" data-delay="0">
+            <div class="internship-card">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div class="company-logo bg-primary-gradient">T</div>
+                <button class="btn btn-link text-muted-light p-0 fs-5"><i class="bi bi-bookmark"></i></button>
+              </div>
+              <h5 class="fw-bold mb-1">Frontend Developer Intern</h5>
+              <p class="text-muted-light fs-sm mb-3">Tech Innovators Inc.</p>
+              <div class="d-flex flex-wrap gap-2 mb-3">
+                <span class="badge-remote">Remote</span>
+                <span class="badge-paid">₹15,000/mo</span>
+              </div>
+              <div class="mb-3">
+                <span class="skill-tag">React</span><span class="skill-tag">CSS</span><span class="skill-tag">JS</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-center border-top border-glass pt-3">
+                <small class="text-muted-light"><i class="bi bi-calendar me-1"></i>6 Months</small>
+                <a href="internship_details.html" class="btn btn-primary-grad btn-sm px-3">Apply Now</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-xl-4" data-anim="fade-up" data-delay="1">
+            <div class="internship-card">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div class="company-logo bg-accent-gradient">C</div>
+                <button class="btn btn-link text-muted-light p-0 fs-5"><i class="bi bi-bookmark"></i></button>
+              </div>
+              <h5 class="fw-bold mb-1">Digital Marketing Intern</h5>
+              <p class="text-muted-light fs-sm mb-3">Creative Solutions Media</p>
+              <div class="d-flex flex-wrap gap-2 mb-3">
+                <span class="badge-paid" style="color:#adb5bd;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15)">Mumbai</span>
+                <span class="badge-paid">₹10,000/mo</span>
+              </div>
+              <div class="mb-3">
+                <span class="skill-tag">SEO</span><span class="skill-tag">Analytics</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-center border-top border-glass pt-3">
+                <small class="text-muted-light"><i class="bi bi-calendar me-1"></i>3 Months</small>
+                <a href="internship_details.html" class="btn btn-primary-grad btn-sm px-3">Apply Now</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-xl-4" data-anim="fade-up" data-delay="2">
+            <div class="internship-card">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div class="company-logo bg-success-gradient text-dark">D</div>
+                <button class="btn btn-link text-muted-light p-0 fs-5"><i class="bi bi-bookmark"></i></button>
+              </div>
+              <h5 class="fw-bold mb-1">Data Science Intern</h5>
+              <p class="text-muted-light fs-sm mb-3">DataWiz Analytics</p>
+              <div class="d-flex flex-wrap gap-2 mb-3">
+                <span class="badge-remote">Remote</span>
+                <span class="badge-paid">₹20,000/mo</span>
+              </div>
+              <div class="mb-3">
+                <span class="skill-tag">Python</span><span class="skill-tag">ML</span><span class="skill-tag">SQL</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-center border-top border-glass pt-3">
+                <small class="text-muted-light"><i class="bi bi-calendar me-1"></i>4 Months</small>
+                <a href="internship_details.html" class="btn btn-primary-grad btn-sm px-3">Apply Now</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-xl-4" data-anim="fade-up" data-delay="3">
+            <div class="internship-card">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div class="company-logo" style="background:linear-gradient(135deg,#f6d365,#fda085)">P</div>
+                <button class="btn btn-link text-muted-light p-0 fs-5"><i class="bi bi-bookmark"></i></button>
+              </div>
+              <h5 class="fw-bold mb-1">HR Recruitment Intern</h5>
+              <p class="text-muted-light fs-sm mb-3">PeopleFirst HR Solutions</p>
+              <div class="d-flex flex-wrap gap-2 mb-3">
+                <span class="badge-remote">Remote</span>
+                <span class="badge-unpaid">Unpaid</span>
+              </div>
+              <div class="mb-3">
+                <span class="skill-tag">Sourcing</span><span class="skill-tag">Communication</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-center border-top border-glass pt-3">
+                <small class="text-muted-light"><i class="bi bi-calendar me-1"></i>2 Months</small>
+                <a href="internship_details.html" class="btn btn-primary-grad btn-sm px-3">Apply Now</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-xl-4" data-anim="fade-up" data-delay="4">
+            <div class="internship-card">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div class="company-logo" style="background:linear-gradient(135deg,#4facfe,#00f2fe)">G</div>
+                <button class="btn btn-link text-muted-light p-0 fs-5"><i class="bi bi-bookmark"></i></button>
+              </div>
+              <h5 class="fw-bold mb-1">Graphic Design Intern</h5>
+              <p class="text-muted-light fs-sm mb-3">Glow Creative Studio</p>
+              <div class="d-flex flex-wrap gap-2 mb-3">
+                <span class="badge-paid" style="color:#adb5bd;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15)">Delhi</span>
+                <span class="badge-paid">₹8,000/mo</span>
+              </div>
+              <div class="mb-3">
+                <span class="skill-tag">Figma</span><span class="skill-tag">Photoshop</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-center border-top border-glass pt-3">
+                <small class="text-muted-light"><i class="bi bi-calendar me-1"></i>3 Months</small>
+                <a href="internship_details.html" class="btn btn-primary-grad btn-sm px-3">Apply Now</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-xl-4" data-anim="fade-up" data-delay="5">
+            <div class="internship-card">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div class="company-logo" style="background:linear-gradient(135deg,#43e97b,#38f9d7)">N</div>
+                <button class="btn btn-link text-muted-light p-0 fs-5"><i class="bi bi-bookmark"></i></button>
+              </div>
+              <h5 class="fw-bold mb-1">NGO Volunteer Intern</h5>
+              <p class="text-muted-light fs-sm mb-3">Nature Care Foundation</p>
+              <div class="d-flex flex-wrap gap-2 mb-3">
+                <span class="badge-paid" style="color:#adb5bd;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15)">Bangalore</span>
+                <span class="badge-unpaid">Certificate Provided</span>
+              </div>
+              <div class="mb-3">
+                <span class="skill-tag">Leadership</span><span class="skill-tag">Events</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-center border-top border-glass pt-3">
+                <small class="text-muted-light"><i class="bi bi-calendar me-1"></i>1 Month</small>
+                <a href="internship_details.html" class="btn btn-primary-grad btn-sm px-3">Apply Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <nav class="mt-5 d-flex justify-content-center">
+          <ul class="pagination pagination-custom mb-0">
+            <li class="page-item disabled"><a class="page-link" href="#"><i class="bi bi-chevron-left"></i></a></li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><span class="page-link text-muted-light">…</span></li>
+            <li class="page-item"><a class="page-link" href="#">24</a></li>
+            <li class="page-item"><a class="page-link" href="#"><i class="bi bi-chevron-right"></i></a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chatbot -->
+  <button id="chatbotFab" class="chatbot-fab ripple-btn"><i class="bi bi-chat-dots-fill"></i></button>
+  <div id="chatbotWindow" class="chatbot-window">
+    <div class="chatbot-header">
+      <div class="chatbot-avatar"><i class="bi bi-robot"></i></div>
+      <div><div class="fw-bold">InternHub Assistant</div><small class="text-light opacity-75">Online</small></div>
+      <button id="chatbotClose" class="btn btn-sm text-light ms-auto p-0"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div id="chatMessages" class="chatbot-messages">
+      <div class="chat-msg bot">Hi! Looking for the perfect internship? I can help you filter by category, location, or skills!</div>
+    </div>
+    <div class="chatbot-quick-btns">
+      <button class="quick-btn">Remote jobs</button>
+      <button class="quick-btn">How to apply?</button>
+      <button class="quick-btn">Duration</button>
+    </div>
+    <div class="chatbot-input-row">
+      <input type="text" id="chatInput" class="chatbot-input" placeholder="Ask me anything...">
+      <button id="chatSend" class="chatbot-send"><i class="bi bi-send-fill"></i></button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  </script>
+    <!-- Theme Toggle -->
+    <script src="js/theme.js"></script>
+</body>
+</html>
+

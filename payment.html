@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment - InternHub</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <style>
+    .payment-tab { background: transparent; border: 1px solid var(--card-border); color: var(--text-muted); border-radius: var(--radius-sm); padding: .6rem 1.2rem; cursor: pointer; transition: var(--transition); font-size: .88rem; font-weight: 500; }
+    .payment-tab.active { background: var(--gradient-primary); border-color: transparent; color: #fff; }
+    .card-field { background: rgba(255,255,255,.06); border: 1px solid var(--card-border); border-radius: var(--radius-sm); padding: .75rem 1rem; color: #fff; width: 100%; font-family: monospace; font-size: .95rem; }
+    .card-field:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(102,126,234,.15); }
+    .card-field::placeholder { color: var(--text-muted); font-family: Inter, sans-serif; }
+    .price-line { display: flex; justify-content: space-between; padding: .6rem 0; border-bottom: 1px solid rgba(255,255,255,.04); font-size: .9rem; }
+    .price-line:last-child { border-bottom: none; }
+    .qr-box { width: 160px; height: 160px; background: #fff; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto; }
+    .success-overlay { display: none; position: fixed; inset: 0; background: rgba(10,8,30,.95); z-index: 9990; align-items: center; justify-content: center; flex-direction: column; }
+    .success-overlay.show { display: flex; }
+    .checkmark-circle { width: 100px; height: 100px; border-radius: 50%; background: var(--gradient-success); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin: 0 auto 1.5rem; }
+  </style>
+</head>
+<body class="pt-navbar" style="background:var(--dark2)">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Intern<span style="-webkit-text-fill-color:var(--accent)">Hub</span></a>
+    </div>
+  </nav>
+
+  <div class="container py-5" style="max-width:1000px">
+    <div class="text-center mb-5">
+      <span class="section-badge">Secure Checkout</span>
+      <h1 class="section-title" style="font-size:2rem">Complete Your <span class="gradient-text">Registration</span></h1>
+      <p class="text-muted-light">One-time payment to unlock all internship opportunities</p>
+    </div>
+
+    <div class="notice-box warning mb-4 d-flex align-items-start gap-2">
+      <i class="bi bi-lightning-charge-fill text-warning mt-1"></i>
+      <span><strong>Free Opportunity:</strong> Score above 70% in our aptitude test to get your registration fee waived! <a href="online_test.html" class="text-warning">Take the test first →</a></span>
+    </div>
+
+    <div class="row g-4">
+      <!-- Payment Form -->
+      <div class="col-lg-7">
+        <div class="glass-card p-4 mb-4">
+          <h5 class="fw-bold mb-3">Payment Method</h5>
+          <div class="d-flex gap-2 mb-4 flex-wrap">
+            <button class="payment-tab active" onclick="switchTab(this,'cardPanel')"><i class="bi bi-credit-card me-2"></i>Card</button>
+            <button class="payment-tab" onclick="switchTab(this,'upiPanel')"><i class="bi bi-phone me-2"></i>UPI</button>
+            <button class="payment-tab" onclick="switchTab(this,'qrPanel')"><i class="bi bi-qr-code me-2"></i>QR Code</button>
+            <button class="payment-tab" onclick="switchTab(this,'netPanel')"><i class="bi bi-bank me-2"></i>Net Banking</button>
+          </div>
+
+          <!-- Card Panel -->
+          <div id="cardPanel">
+            <div class="mb-3">
+              <label class="form-label-dark">Cardholder Name</label>
+              <input type="text" class="card-field" placeholder="Alex Johnson">
+            </div>
+            <div class="mb-3">
+              <label class="form-label-dark">Card Number</label>
+              <input type="text" class="card-field" placeholder="4242 4242 4242 4242" maxlength="19" id="cardNum" oninput="formatCard(this)">
+            </div>
+            <div class="row g-3 mb-3">
+              <div class="col-6">
+                <label class="form-label-dark">Expiry Date</label>
+                <input type="text" class="card-field" placeholder="MM / YY" maxlength="7">
+              </div>
+              <div class="col-6">
+                <label class="form-label-dark">CVV</label>
+                <input type="password" class="card-field" placeholder="•••" maxlength="3">
+              </div>
+            </div>
+            <div class="notice-box info fs-sm d-flex align-items-center gap-2">
+              <i class="bi bi-shield-lock-fill text-primary"></i>
+              Your payment info is encrypted and secure. This is a demo — no real payment is processed.
+            </div>
+          </div>
+
+          <!-- UPI Panel -->
+          <div id="upiPanel" style="display:none">
+            <div class="mb-3">
+              <label class="form-label-dark">UPI ID</label>
+              <input type="text" class="card-field" placeholder="yourname@upi">
+            </div>
+            <button class="btn btn-primary-grad w-100 py-2 mt-2"><i class="bi bi-send me-2"></i>Send Payment Request</button>
+          </div>
+
+          <!-- QR Panel -->
+          <div id="qrPanel" style="display:none;text-align:center">
+            <p class="text-muted-light mb-3">Scan the QR code with any UPI app to pay</p>
+            <div class="qr-box mb-3">
+              <!-- QR Code Pattern (SVG grid pattern as placeholder) -->
+              <svg width="140" height="140" viewBox="0 0 140 140">
+                <rect width="140" height="140" fill="white"/>
+                <rect x="10" y="10" width="50" height="50" fill="none" stroke="black" stroke-width="4"/>
+                <rect x="20" y="20" width="30" height="30" fill="black"/>
+                <rect x="80" y="10" width="50" height="50" fill="none" stroke="black" stroke-width="4"/>
+                <rect x="90" y="20" width="30" height="30" fill="black"/>
+                <rect x="10" y="80" width="50" height="50" fill="none" stroke="black" stroke-width="4"/>
+                <rect x="20" y="90" width="30" height="30" fill="black"/>
+                <rect x="70" y="70" width="10" height="10" fill="black"/>
+                <rect x="85" y="70" width="10" height="10" fill="black"/>
+                <rect x="100" y="70" width="10" height="10" fill="black"/>
+                <rect x="70" y="85" width="10" height="10" fill="black"/>
+                <rect x="100" y="85" width="10" height="10" fill="black"/>
+                <rect x="70" y="100" width="10" height="10" fill="black"/>
+                <rect x="85" y="100" width="10" height="10" fill="black"/>
+                <rect x="115" y="85" width="10" height="10" fill="black"/>
+                <rect x="115" y="100" width="15" height="10" fill="black"/>
+              </svg>
+            </div>
+            <p class="text-muted-light fs-sm">Amount: <strong class="text-white">₹499</strong> | Merchant: InternHub Pvt Ltd</p>
+            <div class="d-flex justify-content-center gap-3 mt-3 flex-wrap">
+              <button class="btn btn-outline-light-grad btn-sm"><i class="bi bi-phone me-1"></i>GPay</button>
+              <button class="btn btn-outline-light-grad btn-sm"><i class="bi bi-phone me-1"></i>PhonePe</button>
+              <button class="btn btn-outline-light-grad btn-sm"><i class="bi bi-phone me-1"></i>Paytm</button>
+            </div>
+          </div>
+
+          <!-- Net Banking -->
+          <div id="netPanel" style="display:none">
+            <div class="mb-3">
+              <label class="form-label-dark">Select Your Bank</label>
+              <select class="card-field">
+                <option>State Bank of India</option>
+                <option>HDFC Bank</option>
+                <option>ICICI Bank</option>
+                <option>Axis Bank</option>
+                <option>Kotak Mahindra</option>
+                <option>Other Bank</option>
+              </select>
+            </div>
+            <button class="btn btn-primary-grad w-100 py-2 mt-2"><i class="bi bi-bank me-2"></i>Proceed to Bank</button>
+          </div>
+        </div>
+
+        <!-- Coupon -->
+        <div class="glass-card p-4">
+          <h6 class="fw-bold mb-3"><i class="bi bi-tag-fill text-primary me-2"></i>Coupon / Scholarship Code</h6>
+          <div class="d-flex gap-2">
+            <input type="text" class="form-control-dark flex-grow-1" placeholder="Enter code e.g. FREE70, SCHOLAR50" id="couponInput">
+            <button class="btn btn-primary-grad px-4" onclick="applyCoupon()">Apply</button>
+          </div>
+          <div id="couponMsg" class="mt-2 fs-sm"></div>
+          <div class="d-flex flex-wrap gap-2 mt-3">
+            <button class="skill-tag" onclick="document.getElementById('couponInput').value='FREE70'">FREE70</button>
+            <button class="skill-tag" onclick="document.getElementById('couponInput').value='SCHOLAR50'">SCHOLAR50</button>
+            <button class="skill-tag" onclick="document.getElementById('couponInput').value='FIRST100'">FIRST100</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Order Summary -->
+      <div class="col-lg-5">
+        <div class="glass-card p-4 mb-4" style="position:sticky;top:90px">
+          <h5 class="fw-bold mb-3">Order Summary</h5>
+          <div class="d-flex align-items-center gap-3 p-3 rounded-md border-glass mb-4" style="background:rgba(102,126,234,.08)">
+            <div class="company-logo bg-primary-gradient">I</div>
+            <div>
+              <div class="fw-bold">InternHub Registration</div>
+              <div class="text-muted-light fs-sm">Full platform access — All features</div>
+            </div>
+          </div>
+
+          <div class="price-line"><span class="text-muted-light">Registration Fee</span><span>₹999</span></div>
+          <div class="price-line"><span class="text-muted-light">Platform Access</span><span>₹0 (Included)</span></div>
+          <div class="price-line"><span class="text-muted-light">Certificate (on completion)</span><span>₹0 (Included)</span></div>
+          <div class="price-line"><span class="text-success">Special Discount (50%)</span><span class="text-success">−₹500</span></div>
+          <div class="price-line"><span class="text-muted-light">GST (18%)</span><span>₹89.82</span></div>
+          <div class="price-line fw-bold fs-5 pt-2"><span>Total Payable</span><span class="gradient-text" id="totalAmount">₹499</span></div>
+
+          <ul class="list-unstyled text-muted-light fs-sm mt-3 mb-4">
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Unlimited internship applications</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Access to all learning resources</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Priority support via chat</li>
+            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Verified digital certificate</li>
+          </ul>
+
+          <button onclick="showSuccess()" class="btn btn-success-grad w-100 py-3 fw-bold ripple-btn fs-5">
+            <i class="bi bi-lock-fill me-2"></i>Pay ₹499 Securely
+          </button>
+
+          <div class="d-flex justify-content-center gap-3 mt-3 flex-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/64px-Mastercard-logo.svg.png" height="24" alt="Mastercard" style="filter:grayscale(1) brightness(2)">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/64px-Visa_Inc._logo.svg.png" height="24" alt="Visa" style="filter:grayscale(1) brightness(2)">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Paytm_Logo_%28standalone%29.svg/64px-Paytm_Logo_%28standalone%29.svg.png" height="24" alt="Paytm" style="filter:grayscale(1) brightness(2)">
+          </div>
+          <p class="text-center text-muted-light fs-xs mt-2"><i class="bi bi-shield-check me-1"></i>256-bit SSL Encrypted</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Overlay -->
+  <div class="success-overlay" id="successOverlay">
+    <div class="text-center px-3">
+      <div class="checkmark-circle success-icon-anim mb-3">✓</div>
+      <h2 class="fw-bold mb-2">Payment Successful!</h2>
+      <p class="text-muted-light mb-4">Welcome to InternHub! Your account is now fully activated.</p>
+      <div class="glass-card p-4 mb-4 mx-auto" style="max-width:400px">
+        <div class="price-line"><span class="text-muted-light">Transaction ID</span><span class="text-success">TXN2026051800042</span></div>
+        <div class="price-line"><span class="text-muted-light">Amount Paid</span><span class="fw-bold">₹499</span></div>
+        <div class="price-line"><span class="text-muted-light">Date</span><span>May 18, 2026</span></div>
+        <div class="price-line" style="border-bottom:none"><span class="text-muted-light">Status</span><span class="status-badge approved">Confirmed</span></div>
+      </div>
+      <a href="student_dashbord.html" class="btn btn-primary-grad btn-lg px-5 me-2">Go to Dashboard</a>
+      <button onclick="document.getElementById('successOverlay').classList.remove('show')" class="btn btn-outline-light-grad btn-lg px-5">Close</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function switchTab(btn, panelId) {
+      document.querySelectorAll('.payment-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      ['cardPanel','upiPanel','qrPanel','netPanel'].forEach(id => {
+        const el = document.getElementById(id);
+        if(el) el.style.display = id === panelId ? 'block' : 'none';
+      });
+    }
+    function formatCard(input) {
+      let v = input.value.replace(/\D/g,'').substring(0,16);
+      input.value = v.match(/.{1,4}/g)?.join(' ') || v;
+    }
+    function applyCoupon() {
+      const code = document.getElementById('couponInput').value.toUpperCase();
+      const msg = document.getElementById('couponMsg');
+      const total = document.getElementById('totalAmount');
+      const payBtn = document.querySelector('.widget-card + button, button[onclick="showSuccess()"]');
+      if(code === 'FREE70') {
+        msg.innerHTML='<span class="text-success">🎉 70% discount applied!</span>';
+        total.textContent='₹149';
+        if(payBtn) payBtn.innerHTML = '<i class="bi bi-lock-fill me-2"></i>Pay ₹149 Securely';
+      }
+      else if(code === 'SCHOLAR50') {
+        msg.innerHTML='<span class="text-success">✅ Scholarship: 50% off applied!</span>';
+        total.textContent='₹249';
+        if(payBtn) payBtn.innerHTML = '<i class="bi bi-lock-fill me-2"></i>Pay ₹249 Securely';
+      }
+      else if(code === 'FIRST100') {
+        msg.innerHTML='<span class="text-success">🎁 First-time discount: ₹100 off!</span>';
+        total.textContent='₹399';
+        if(payBtn) payBtn.innerHTML = '<i class="bi bi-lock-fill me-2"></i>Pay ₹399 Securely';
+      }
+      else { msg.innerHTML='<span class="text-danger">❌ Invalid coupon code. Try FREE70</span>'; }
+    }
+    function showSuccess() {
+      // Update simulated DB for Paid status
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      if (currentUser) {
+        currentUser.paymentStatus = 'Paid';
+        currentUser.status = 'Paid';
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+        // Update in allStudents list
+        let allStudents = JSON.parse(localStorage.getItem('allStudents') || '[]');
+        const idx = allStudents.findIndex(s => s.id === currentUser.id);
+        if (idx !== -1) {
+          allStudents[idx] = currentUser;
+          localStorage.setItem('allStudents', JSON.stringify(allStudents));
+        }
+      }
+
+      document.getElementById('successOverlay').classList.add('show');
+    }
+  </script>
+    <!-- Theme Toggle -->
+    <script src="js/theme.js"></script>
+</body>
+</html>
+

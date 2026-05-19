@@ -1,0 +1,303 @@
+Internship Provider Web Application Prompt
+
+Create a modern, responsive, full-stack Internship Provider Web Application using:
+
+Frontend: HTML, CSS, JavaScript, Bootstrap/Tailwind
+Backend: PHP
+Database: MySQL
+Authentication: Login/Register System
+Admin Panel Included
+Student Dashboard Included
+Mobile Responsive Design
+Clean UI/UX with animations and modern cards
+
+The website is used by students to apply for internships, attend online tests, learn through embedded learning platforms, and communicate with support.
+
+Main Features
+1. Home Page
+
+Design a professional landing page containing:
+
+Hero section with heading:
+“Find the Best Internship Opportunities”
+Internship categories:
+Management
+Social Work
+Volunteer
+Marketing
+HR
+Technical
+Remote Internship
+Search bar with filters:
+Category
+Location
+Duration
+Paid/Unpaid
+Featured internships section
+Success stories/reviews
+Call-to-action buttons:
+Apply Now
+Take Test
+Register
+
+Add:
+
+Responsive navbar
+Footer with links
+Contact section
+Social media icons
+2. Authentication System
+
+Create:
+
+Student Registration
+Student Login
+Forgot Password
+Email Validation
+Secure Session Handling
+
+During registration, the student must upload:
+
+Full Name
+Email
+Phone Number
+Resume (PDF/DOC)
+College Name
+Skills
+Profile Photo
+
+Store all details in MySQL database.
+
+3. Registration Payment System
+
+After registration:
+
+Redirect user to payment page
+Student pays registration fee
+Show payment success page
+Save payment details in database
+
+Add:
+
+Razorpay/Stripe integration placeholder
+Payment status tracking
+
+Logic:
+
+If student scores above required criteria in the online test:
+Internship becomes FREE
+Registration amount can be waived/refunded
+4. Online Test / Exam Module
+
+Create a test page where students can:
+
+Attend MCQ-based exams
+Timer-based tests
+Submit answers online
+View result instantly
+
+Admin can:
+
+Create questions
+Set passing criteria
+Shortlist students automatically
+
+Student data + score should be stored in database.
+
+If student score >= criteria:
+
+Mark student as “Shortlisted”
+Unlock free internship access
+5. Internship Search & Filter System
+
+Create advanced internship filtering:
+
+Filters:
+
+Category
+Work Type
+Duration
+Remote/Offline
+Free/Paid
+Skills
+
+Add:
+
+Internship cards
+Apply button
+Save internship feature
+6. Student Dashboard
+
+Create a professional dashboard where students can:
+
+View applied internships
+Track application status
+View test scores
+Access learning resources
+Chat with support bot
+Edit profile
+Download certificate
+View notifications
+Payment history
+
+Dashboard should contain:
+
+Sidebar navigation
+Profile section
+Statistics cards
+Responsive charts
+7. Admin Panel
+
+Create a powerful admin dashboard.
+
+Admin can:
+
+Manage users
+Manage internships
+Manage advertisements/banners
+Add/Edit/Delete internships
+View student registrations
+View uploaded resumes
+Manage tests/questions
+Shortlist candidates
+Manage payments
+Manage reviews
+Send notifications
+Block/unblock users
+
+Admin dashboard should include:
+
+Analytics charts
+Tables
+Search system
+Pagination
+8. Chatbot Support System
+
+Add AI chatbot/help assistant.
+
+Features:
+
+Floating chat icon
+FAQ support
+Internship guidance
+Registration help
+Payment support
+Student query handling
+
+UI should look modern and interactive.
+
+9. Embedded Learning Platform
+
+Create a learning section containing embedded websites/videos for students.
+
+Add:
+
+YouTube embedded learning videos
+External learning websites
+Notes/resources section
+Course recommendations
+
+Categories:
+
+Interview Preparation
+Communication Skills
+Resume Building
+Aptitude
+Management Skills
+10. Reviews & Testimonials Page
+
+Create a review system where students can:
+
+Submit ratings
+Write reviews
+Upload profile image
+
+Admin can:
+
+Approve/Delete reviews
+
+Display:
+
+Star ratings
+Student feedback cards
+Success stories
+11. Responsive UI Requirements
+
+The entire website must be:
+
+Mobile responsive
+Tablet responsive
+Desktop optimized
+
+Use:
+
+Modern gradients
+Hover animations
+Glassmorphism cards
+Attractive buttons
+Smooth scrolling
+12. Database Structure
+
+Create MySQL tables for:
+
+users
+admin
+internships
+applications
+test_questions
+test_results
+payments
+reviews
+chatbot_messages
+notifications
+13. Additional Features
+
+Add:
+
+Email notifications
+Resume upload validation
+Internship recommendation system
+Search suggestions
+Dark mode
+Loading animations
+Secure authentication
+Session management
+14. Technologies
+
+Use:
+
+Frontend:
+
+HTML5
+CSS3
+JavaScript
+Bootstrap/Tailwind
+
+Backend:
+
+PHP
+
+Database:
+
+MySQL
+
+Optional:
+
+AJAX
+jQuery
+Razorpay API
+15. Output Requirement
+
+Generate:
+
+Full project structure
+Responsive UI design
+Frontend pages
+PHP backend files
+SQL database file
+Admin dashboard
+Student dashboard
+Authentication system
+Comments in code for understanding
+
+The project should look like a professional startup internship platform.

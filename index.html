@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InternHub - Find Your Dream Internship</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+
+<body>
+
+    <!-- Page Loader -->
+    <div class="page-loader">
+        <div class="loader-ring"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                Intern<span>Hub</span>
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+                <i class="bi bi-list fs-1 text-light"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="internships.html">Internships</a></li>
+                    <li class="nav-item"><a class="nav-link" href="learning_resources.html">Learning</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+                    <a href="login.html" class="text-light text-decoration-none fw-medium">Login</a>
+                    <a href="register.html" class="btn btn-primary-grad ripple-btn">Register Free</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container text-center position-relative z-1">
+            <div class="d-inline-flex align-items-center gap-2 floating-badge mb-4" data-anim="fade-up">
+                <span class="badge bg-success rounded-circle p-1"><i class="bi bi-check2"></i></span>
+                <span>Over 1,000+ new internships added this week</span>
+            </div>
+
+            <h1 class="hero-title mb-4" data-anim="fade-up" data-delay="1">
+                Launch Your Career with the <br>
+                <span class="gradient-text">Best Internship Opportunities</span>
+            </h1>
+
+            <p class="hero-subtitle mx-auto mb-5" data-anim="fade-up" data-delay="2">
+                Connect with top startups and global companies. Gain real-world experience, get certified, and kickstart
+                your professional journey today.
+            </p>
+
+            <div class="d-flex justify-content-center gap-3 mb-5" data-anim="fade-up" data-delay="3">
+                <a href="#internships" class="btn btn-primary-grad btn-lg ripple-btn px-4 py-3">Explore Internships</a>
+                <a href="online_test.html" class="btn btn-outline-light-grad btn-lg px-4 py-3"><i
+                        class="bi bi-lightning-charge-fill text-warning me-2"></i>Take Skill Test</a>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-container mx-auto mt-5" style="max-width: 900px;" data-anim="zoom-in" data-delay="4">
+                <form class="row g-2 align-items-center">
+                    <div class="col-md-3">
+                        <div class="d-flex align-items-center px-2">
+                            <i class="bi bi-search text-muted me-2"></i>
+                            <input type="text" placeholder="Job title, skills...">
+                        </div>
+                    </div>
+                    <div class="col-md-1 d-none d-md-block">
+                        <div class="search-divider"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="d-flex align-items-center px-2">
+                            <i class="bi bi-geo-alt text-muted me-2"></i>
+                            <select>
+                                <option value="">All Locations</option>
+                                <option value="remote">Remote</option>
+                                <option value="bangalore">Bangalore</option>
+                                <option value="mumbai">Mumbai</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-1 d-none d-md-block">
+                        <div class="search-divider"></div>
+                    </div>
+                    <div class="col-md-2">
+                        <select class="px-2">
+                            <option value="">Category</option>
+                            <option value="tech">Technical</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="hr">HR</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary-grad w-100 py-2">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="section border-top border-bottom border-glass" style="background: var(--dark2);">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-6 col-lg-3" data-anim="fade-up" data-delay="0">
+                    <div class="stat-card">
+                        <div class="stat-number"><span class="counter-value" data-target="15">0</span>K+</div>
+                        <div class="stat-label">Students Placed</div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3" data-anim="fade-up" data-delay="1">
+                    <div class="stat-card">
+                        <div class="stat-number"><span class="counter-value" data-target="500">0</span>+</div>
+                        <div class="stat-label">Partner Companies</div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3" data-anim="fade-up" data-delay="2">
+                    <div class="stat-card">
+                        <div class="stat-number"><span class="counter-value" data-target="2500">0</span>+</div>
+                        <div class="stat-label">Active Internships</div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3" data-anim="fade-up" data-delay="3">
+                    <div class="stat-card">
+                        <div class="stat-number"><span class="counter-value" data-target="98">0</span>%</div>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="section">
+        <div class="container">
+            <div class="text-center mb-5" data-anim="fade-up">
+                <span class="section-badge">Categories</span>
+                <h2 class="section-title">Explore by <span class="gradient-text">Domain</span></h2>
+                <p class="text-muted-light mt-3 max-w-600 mx-auto">Find an internship that matches your skills and
+                    career aspirations from our highly sought-after domains.</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Category 1 -->
+                <div class="col-6 col-md-4 col-lg-3" data-anim="fade-up" data-delay="0">
+                    <a href="internships.html" class="category-card d-block">
+                        <div class="category-icon bg-primary-gradient bg-opacity-10 text-primary glow-primary"><i
+                                class="bi bi-code-slash"></i></div>
+                        <h5 class="fw-bold mb-1">Technical</h5>
+                        <small class="text-muted-light">450+ Openings</small>
+                    </a>
+                </div>
+                <!-- Category 2 -->
+                <div class="col-6 col-md-4 col-lg-3" data-anim="fade-up" data-delay="1">
+                    <a href="internships.html" class="category-card d-block">
+                        <div class="category-icon bg-accent-gradient bg-opacity-10 text-accent glow-accent"><i
+                                class="bi bi-megaphone"></i></div>
+                        <h5 class="fw-bold mb-1">Marketing</h5>
+                        <small class="text-muted-light">320+ Openings</small>
+                    </a>
+                </div>
+                <!-- Category 3 -->
+                <div class="col-6 col-md-4 col-lg-3" data-anim="fade-up" data-delay="2">
+                    <a href="internships.html" class="category-card d-block">
+                        <div class="category-icon bg-success-gradient bg-opacity-10 text-success glow-success"><i
+                                class="bi bi-people"></i></div>
+                        <h5 class="fw-bold mb-1">Human Resources</h5>
+                        <small class="text-muted-light">180+ Openings</small>
+                    </a>
+                </div>
+                <!-- Category 4 -->
+                <div class="col-6 col-md-4 col-lg-3" data-anim="fade-up" data-delay="3">
+                    <a href="internships.html" class="category-card d-block">
+                        <div class="category-icon bg-info-gradient bg-opacity-10 text-info"><i
+                                class="bi bi-graph-up-arrow"></i></div>
+                        <h5 class="fw-bold mb-1">Management</h5>
+                        <small class="text-muted-light">210+ Openings</small>
+                    </a>
+                </div>
+                <!-- Category 5 -->
+                <div class="col-6 col-md-4 col-lg-3" data-anim="fade-up" data-delay="4">
+                    <a href="internships.html" class="category-card d-block">
+                        <div class="category-icon bg-warning-gradient bg-opacity-10 text-warning"><i
+                                class="bi bi-heart-pulse"></i></div>
+                        <h5 class="fw-bold mb-1">Social Work</h5>
+                        <small class="text-muted-light">150+ Openings</small>
+                    </a>
+                </div>
+                <!-- Category 6 -->
+                <div class="col-6 col-md-4 col-lg-3" data-anim="fade-up" data-delay="5">
+                    <a href="internships.html" class="category-card d-block">
+                        <div class="category-icon bg-primary-gradient bg-opacity-10 text-primary glow-primary"><i
+                                class="bi bi-palette"></i></div>
+                        <h5 class="fw-bold mb-1">UI/UX Design</h5>
+                        <small class="text-muted-light">280+ Openings</small>
+                    </a>
+                </div>
+                <!-- Category 7 -->
+                <div class="col-6 col-md-4 col-lg-3" data-anim="fade-up" data-delay="6">
+                    <a href="internships.html" class="category-card d-block">
+                        <div class="category-icon bg-accent-gradient bg-opacity-10 text-accent glow-accent"><i
+                                class="bi bi-globe"></i></div>
+                        <h5 class="fw-bold mb-1">Remote Work</h5>
+                        <small class="text-muted-light">500+ Openings</small>
+                    </a>
+                </div>
+                <!-- Category 8 -->
+                <div class="col-6 col-md-4 col-lg-3" data-anim="fade-up" data-delay="7">
+                    <a href="internships.html" class="category-card d-block">
+                        <div class="category-icon bg-success-gradient bg-opacity-10 text-success glow-success"><i
+                                class="bi bi-grid"></i></div>
+                        <h5 class="fw-bold mb-1">View All</h5>
+                        <small class="text-muted-light">Explore 2500+</small>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Internships -->
+    <section id="internships" class="section bg-dark-grad">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-end mb-5" data-anim="fade-up">
+                <div>
+                    <span class="section-badge">Hot Opportunities</span>
+                    <h2 class="section-title">Featured <span class="gradient-text">Internships</span></h2>
+                </div>
+                <a href="internships.html" class="btn btn-outline-light-grad d-none d-md-inline-block">View All Internships <i
+                        class="bi bi-arrow-right ms-2"></i></a>
+            </div>
+
+            <div class="row g-4">
+                <!-- Card 1 -->
+                <div class="col-md-6 col-xl-4" data-anim="fade-up" data-delay="0">
+                    <div class="internship-card">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <div class="company-logo bg-primary-gradient shadow-sm">T</div>
+                            <button class="btn btn-sm btn-link text-light p-0 fs-5"><i
+                                    class="bi bi-bookmark"></i></button>
+                        </div>
+                        <h5 class="fw-bold mb-1">Frontend Developer Intern</h5>
+                        <p class="text-muted-light fs-sm mb-3">Tech Innovators Inc.</p>
+
+                        <div class="d-flex flex-wrap gap-2 mb-4">
+                            <span class="badge-remote"><i class="bi bi-house-door me-1"></i> Remote</span>
+                            <span class="badge-paid"><i class="bi bi-cash me-1"></i> Paid (?15k/mo)</span>
+                            <span class="badge-unpaid text-info border-info bg-info bg-opacity-10"><i
+                                    class="bi bi-clock me-1"></i> 6 Months</span>
+                        </div>
+
+                        <div class="mb-4">
+                            <span class="skill-tag">React.js</span>
+                            <span class="skill-tag">CSS3</span>
+                            <span class="skill-tag">Bootstrap</span>
+                        </div>
+
+                        <div
+                            class="d-flex justify-content-between align-items-center mt-auto border-top border-glass pt-3">
+                            <small class="text-muted-light">Posted 2 days ago</small>
+                            <a href="internship_details.html" class="btn btn-primary-grad btn-sm px-4">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-md-6 col-xl-4" data-anim="fade-up" data-delay="1">
+                    <div class="internship-card">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <div class="company-logo bg-accent-gradient shadow-sm">C</div>
+                            <button class="btn btn-sm btn-link text-light p-0 fs-5"><i
+                                    class="bi bi-bookmark"></i></button>
+                        </div>
+                        <h5 class="fw-bold mb-1">Digital Marketing Intern</h5>
+                        <p class="text-muted-light fs-sm mb-3">Creative Solutions Media</p>
+
+                        <div class="d-flex flex-wrap gap-2 mb-4">
+                            <span class="badge-paid text-white bg-secondary border-secondary"><i
+                                    class="bi bi-geo-alt me-1"></i> Mumbai</span>
+                            <span class="badge-paid"><i class="bi bi-cash me-1"></i> Paid (?10k/mo)</span>
+                            <span class="badge-unpaid text-info border-info bg-info bg-opacity-10"><i
+                                    class="bi bi-clock me-1"></i> 3 Months</span>
+                        </div>
+
+                        <div class="mb-4">
+                            <span class="skill-tag">SEO</span>
+                            <span class="skill-tag">Social Media</span>
+                            <span class="skill-tag">Analytics</span>
+                        </div>
+
+                        <div
+                            class="d-flex justify-content-between align-items-center mt-auto border-top border-glass pt-3">
+                            <small class="text-muted-light">Posted 5 days ago</small>
+                            <a href="internship_details.html" class="btn btn-primary-grad btn-sm px-4">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-md-6 col-xl-4" data-anim="fade-up" data-delay="2">
+                    <div class="internship-card">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <div class="company-logo bg-success-gradient shadow-sm text-dark">N</div>
+                            <button class="btn btn-sm btn-link text-light p-0 fs-5"><i
+                                    class="bi bi-bookmark"></i></button>
+                        </div>
+                        <h5 class="fw-bold mb-1">NGO Volunteer</h5>
+                        <p class="text-muted-light fs-sm mb-3">Nature Care Foundation</p>
+
+                        <div class="d-flex flex-wrap gap-2 mb-4">
+                            <span class="badge-paid text-white bg-secondary border-secondary"><i
+                                    class="bi bi-geo-alt me-1"></i> Bangalore</span>
+                            <span class="badge-unpaid"><i class="bi bi-heart me-1"></i> Unpaid</span>
+                            <span class="badge-unpaid text-info border-info bg-info bg-opacity-10"><i
+                                    class="bi bi-clock me-1"></i> 2 Months</span>
+                        </div>
+
+                        <div class="mb-4">
+                            <span class="skill-tag">Communication</span>
+                            <span class="skill-tag">Teamwork</span>
+                            <span class="skill-tag">Event Mgt.</span>
+                        </div>
+
+                        <div
+                            class="d-flex justify-content-between align-items-center mt-auto border-top border-glass pt-3">
+                            <small class="text-muted-light">Posted 1 week ago</small>
+                            <a href="internship_details.html" class="btn btn-primary-grad btn-sm px-4">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5 d-md-none">
+                <a href="internships.html" class="btn btn-outline-light-grad w-100">View All Internships</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works / Steps -->
+    <section class="section">
+        <div class="container">
+            <div class="text-center mb-5" data-anim="fade-up">
+                <span class="section-badge">Process</span>
+                <h2 class="section-title">How To <span class="gradient-text">Apply</span></h2>
+                <p class="text-muted-light mt-3 max-w-600 mx-auto">Follow these simple steps to secure your dream
+                    internship and start building your career today.</p>
+            </div>
+
+            <div class="row position-relative">
+                <div class="col-md-3" data-anim="fade-up" data-delay="0">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-connector d-none d-md-block"></div>
+                        <h5 class="fw-bold mb-2">Create Profile</h5>
+                        <p class="text-muted-light fs-sm">Register and complete your profile with skills and resume.</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-anim="fade-up" data-delay="1">
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-connector d-none d-md-block"></div>
+                        <h5 class="fw-bold mb-2">Take Test</h5>
+                        <p class="text-muted-light fs-sm">Attend our online aptitude test. Score high to get it for
+                            free!</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-anim="fade-up" data-delay="2">
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-connector d-none d-md-block"></div>
+                        <h5 class="fw-bold mb-2">Apply Jobs</h5>
+                        <p class="text-muted-light fs-sm">Browse through listings and apply to your preferred companies.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-anim="fade-up" data-delay="3">
+                    <div class="step-card">
+                        <div class="step-number"><i class="bi bi-stars"></i></div>
+                        <h5 class="fw-bold mb-2">Get Hired</h5>
+                        <p class="text-muted-light fs-sm">Clear the interview, get the offer letter, and start learning.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notice Box / Assessment Promo -->
+    <section class="pb-5">
+        <div class="container">
+            <div class="glass-card p-4 p-md-5 text-center position-relative overflow-hidden" data-anim="zoom-in">
+                <div class="position-absolute top-0 start-0 w-100 h-100 bg-primary-gradient opacity-10"></div>
+                <div class="position-relative z-1">
+                    <h3 class="fw-bold mb-3">Score High, Earn a Free Internship! ??</h3>
+                    <p class="text-light mb-4 fs-5">Students scoring above 70% in our online criteria test may receive
+                        exclusive <strong class="text-warning">100% FREE</strong> internship opportunities.</p>
+                    <a href="online_test.html" class="btn btn-accent-grad btn-lg px-5 ripple-btn">Take The Test Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews / Success Stories -->
+    <section class="section border-top border-glass bg-dark-grad">
+        <div class="container">
+            <div class="text-center mb-5" data-anim="fade-up">
+                <span class="section-badge">Testimonials</span>
+                <h2 class="section-title">Student <span class="gradient-text">Success Stories</span></h2>
+            </div>
+
+            <div class="row g-4">
+                <!-- Review 1 -->
+                <div class="col-md-4" data-anim="fade-up" data-delay="0">
+                    <div class="review-card">
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <img src="https://i.pravatar.cc/150?img=32" alt="Avatar" class="review-avatar">
+                            <div>
+                                <h6 class="fw-bold mb-0">Sarah Jenkins</h6>
+                                <small class="text-muted-light">Frontend Developer Intern</small>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <i class="bi bi-star-fill star-filled"></i>
+                            <i class="bi bi-star-fill star-filled"></i>
+                            <i class="bi bi-star-fill star-filled"></i>
+                            <i class="bi bi-star-fill star-filled"></i>
+                            <i class="bi bi-star-fill star-filled"></i>
+                        </div>
+                        <p class="text-light opacity-75 fs-sm fst-italic">"InternHub completely transformed my career
+                            path. The online test helped me secure a free internship at a top tech firm. The dashboard
+                            makes tracking so easy!"</p>
+                    </div>
+                </div>
+                <!-- Review 2 -->
+                <div class="col-md-4" data-anim="fade-up" data-delay="1">
+                    <div class="review-card">
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <img src="https://i.pravatar.cc/150?img=11" alt="Avatar"
+                                class="review-avatar border-accent">
+                            <div>
+                                <h6 class="fw-bold mb-0">Rahul Sharma</h6>
+                                <small class="text-muted-light">Marketing Intern</small>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <i class="bi bi-star-fill star-filled"></i>
+                            <i class="bi bi-star-fill star-filled"></i>
+                            <i class="bi bi-star-fill star-filled"></i>
+                            <i class="bi bi-star-fill star-filled"></i>
+                            <i class="bi bi-star-half star-filled"></i>
+                        </div>
+                        <p class="text-light opacity-75 fs-sm fst-italic">"The learning resources provided during the
+                            internship were top-notch. I applied for 3 companies and got shortlisted for 2 within a
+                            week. Highly recommended platform."</p>
+                    </div>
+                </div>
+                <!-- Review 3 -->
+                <div class="col-md-4" data-anim="fade-up" data-delay="2">
+                    <div class="review-card">
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <img src="https://i.pravatar.cc/150?img=5" alt="Avatar"
+                                class="review-avatar border-success">
+                            <div>
+                                <h6 class="fw-bold mb-0">Priya Patel</h6>
+                                <small class="text-muted-light">HR Intern</small>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <i class="bi bi-star-fill star-filled"></i>
+                            <i class="bi bi-star-fill star-filled"></i>
+                            <i class="bi bi-star-fill star-filled"></i>
+                            <i class="bi bi-star-fill star-filled"></i>
+                            <i class="bi bi-star-fill star-filled"></i>
+                        </div>
+                        <p class="text-light opacity-75 fs-sm fst-italic">"I loved the UI of the student dashboard. It's
+                            so modern and easy to use. The chatbot solved my payment query instantly. Got my certificate
+                            on time too!"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="section pb-0" data-anim="fade-up">
+        <div class="container">
+            <div class="bg-primary-gradient rounded-xl p-5 text-center position-relative overflow-hidden shadow-lg">
+                <div class="position-relative z-1 py-4">
+                    <h2 class="fw-bold text-white mb-3">Ready to kickstart your professional journey?</h2>
+                    <p class="text-white opacity-75 mb-4 max-w-600 mx-auto">Join thousands of students who have already
+                        found their perfect internship match through our platform.</p>
+                    <a href="register.html"
+                        class="btn btn-light btn-lg text-primary fw-bold px-5 rounded-pill shadow-sm">Create Free
+                        Account</a>
+                </div>
+                <!-- Decorative circles -->
+                <div
+                    class="position-absolute top-0 start-0 translate-middle w-50 h-100 bg-white opacity-10 rounded-circle rounded-pill">
+                </div>
+                <div
+                    class="position-absolute bottom-0 end-0 translate-middle-x w-25 h-100 bg-white opacity-10 rounded-circle">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 pe-lg-5">
+                    <a class="footer-brand gradient-text d-inline-block mb-3" href="index.html">InternHub</a>
+                    <p class="text-muted-light fs-sm mb-4">Empowering students with real-world experience. We bridge the
+                        gap between academic learning and professional industry requirements.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="topbar-icon-btn"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="topbar-icon-btn"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="topbar-icon-btn"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="topbar-icon-btn"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-2 offset-lg-1">
+                    <h6 class="footer-title">Platform</h6>
+                    <a href="internships.html" class="footer-link">Browse Internships</a>
+                    <a href="online_test.html" class="footer-link">Online Test</a>
+                    <a href="learning_resources.html" class="footer-link">Learning Resources</a>
+                    <a href="payment.html" class="footer-link">Pricing</a>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h6 class="footer-title">Company</h6>
+                    <a href="about.html" class="footer-link">About Us</a>
+                    <a href="contact.html" class="footer-link">Contact Support</a>
+                    <a href="review.html" class="footer-link">Success Stories</a>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="footer-title">Contact Us</h6>
+                    <div class="d-flex align-items-start gap-2 mb-3 text-muted-light fs-sm">
+                        <i class="bi bi-geo-alt-fill text-primary mt-1"></i>
+                        <span>123 Innovation Drive, Tech Park,<br>Bangalore, India 560001</span>
+                    </div>
+                    <div class="d-flex align-items-center gap-2 mb-3 text-muted-light fs-sm">
+                        <i class="bi bi-envelope-fill text-primary"></i>
+                        <span>support@internhub.in</span>
+                    </div>
+                    <div class="d-flex align-items-center gap-2 text-muted-light fs-sm">
+                        <i class="bi bi-telephone-fill text-primary"></i>
+                        <span>+91 98765 43210</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom text-center text-muted-light fs-sm">
+                <p class="mb-0">&copy; 2026 InternHub Platform. All rights reserved. Designed for students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CHATBOT COMPONENT (Controlled by main.js) -->
+    <button id="chatbotFab" class="chatbot-fab ripple-btn">
+        <i class="bi bi-chat-dots-fill"></i>
+    </button>
+
+    <div id="chatbotWindow" class="chatbot-window">
+        <div class="chatbot-header">
+            <div class="chatbot-avatar"><i class="bi bi-robot"></i></div>
+            <div>
+                <div class="fw-bold">InternHub Assistant</div>
+                <small class="text-light opacity-75">Online</small>
+            </div>
+            <button id="chatbotClose" class="btn btn-sm text-light ms-auto p-0"><i class="bi bi-x-lg"></i></button>
+        </div>
+        <div id="chatMessages" class="chatbot-messages">
+            <div class="chat-msg bot">
+                Hello! Welcome to InternHub. How can I assist you with your internship search today?
+            </div>
+        </div>
+        <div class="chatbot-quick-btns">
+            <button class="quick-btn">How to apply?</button>
+            <button class="quick-btn">Payment fee</button>
+            <button class="quick-btn">Take test</button>
+        </div>
+        <div class="chatbot-input-row">
+            <input type="text" id="chatInput" class="chatbot-input" placeholder="Type a message...">
+            <button id="chatSend" class="chatbot-send"><i class="bi bi-send-fill"></i></button>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Main Site JS -->
+    <script src="js/main.js"></script>
+    <!-- Theme Toggle -->
+    <script src="js/theme.js"></script>
+</body>
+
+</html>
+
