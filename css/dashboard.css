@@ -396,3 +396,110 @@
   .widget-number { font-size: 1.8rem; }
   .data-table th, .data-table td { padding: 0.75rem 0.8rem; font-size: 0.8rem; }
 }
+
+/* =============================================
+   LIGHT MODE — DASHBOARD OVERRIDES
+   ============================================= */
+body.light-mode .sidebar {
+  background: #ffffff;
+  border-right-color: var(--card-border);
+}
+
+body.light-mode .sidebar-logo {
+  border-bottom-color: var(--card-border);
+}
+
+body.light-mode .sidebar-link:hover {
+  background: rgba(102, 126, 234, 0.08);
+  color: var(--primary);
+}
+
+body.light-mode .sidebar-link.active {
+  color: #fff !important;
+}
+
+body.light-mode .dashboard-topbar {
+  background: rgba(255, 255, 255, 0.85);
+  border-bottom-color: var(--card-border);
+}
+
+body.light-mode .topbar-toggle {
+  border-color: var(--card-border);
+  color: var(--text-light);
+}
+
+body.light-mode .topbar-toggle:hover {
+  background: rgba(102, 126, 234, 0.08);
+}
+
+body.light-mode .topbar-search {
+  background: rgba(15, 23, 42, 0.05);
+  border-color: var(--card-border);
+  color: var(--text-light);
+}
+
+body.light-mode .topbar-search:focus {
+  border-color: var(--primary);
+  background: rgba(15, 23, 42, 0.07);
+}
+
+body.light-mode .topbar-search::placeholder {
+  color: var(--text-muted);
+}
+
+body.light-mode .topbar-icon-btn {
+  background: rgba(15, 23, 42, 0.04);
+  border-color: var(--card-border);
+  color: var(--text-muted);
+}
+
+body.light-mode .topbar-icon-btn:hover {
+  background: rgba(102, 126, 234, 0.12);
+  border-color: rgba(102, 126, 234, 0.3);
+  color: var(--primary);
+}
+
+body.light-mode .notification-dot {
+  border-color: #ffffff;
+}
+
+body.light-mode .data-table th {
+  background: rgba(15, 23, 42, 0.02);
+  border-bottom-color: var(--card-border);
+}
+
+body.light-mode .data-table td {
+  border-bottom-color: rgba(15, 23, 42, 0.04);
+}
+
+body.light-mode .data-table tr:hover td {
+  background: rgba(102, 126, 234, 0.03);
+}
+
+body.light-mode .timeline-dot {
+  background: #ffffff;
+}
+
+body.light-mode .timeline-dot.active {
+  background: var(--primary);
+}
+
+body.light-mode .notification-item {
+  border-bottom-color: rgba(15, 23, 42, 0.04);
+}
+
+body.light-mode .notification-item:hover {
+  background: rgba(102, 126, 234, 0.03);
+}
+
+body.light-mode .metric-mini {
+  background: rgba(15, 23, 42, 0.03);
+  border-color: var(--card-border);
+}
+
+body.light-mode .admin-sidebar {
+  background: #f8fafc;
+}
+/* Dashboard Tabs */
+.dashboard-tab { display: none; }
+.dashboard-tab.active { display: block; animation: fadeUp 0.4s ease; }

@@ -89,27 +89,27 @@
       <form id="loginForm" onsubmit="event.preventDefault(); submitLogin();" novalidate>
         <div class="mb-3">
           <label class="form-label-dark">Email Address</label>
-          <input type="email" id="emailField" class="form-control-dark" placeholder="alex@example.com" required>
+          <input type="email" id="emailField" class="form-control-dark" placeholder="Enter email address" tabindex="1" required>
         </div>
         <div class="mb-4">
           <div class="d-flex justify-content-between mb-1">
             <label class="form-label-dark">Password</label>
-            <a href="#" class="text-primary fs-sm text-decoration-none">Forgot password?</a>
+            <a href="#" class="text-primary fs-sm text-decoration-none" tabindex="5">Forgot password?</a>
           </div>
           <div class="position-relative">
-            <input type="password" id="pwdField" class="form-control-dark pe-5" placeholder="••••••••" required>
-            <button type="button" onclick="togglePwd()" class="btn btn-link position-absolute end-0 top-50 translate-middle-y text-muted-light px-3 py-0 border-0">
+            <input type="password" id="pwdField" class="form-control-dark pe-5" placeholder="••••••••" tabindex="2" required>
+            <button type="button" onclick="togglePwd()" class="btn btn-link position-absolute end-0 top-50 translate-middle-y text-muted-light px-3 py-0 border-0" tabindex="3">
               <i class="bi bi-eye" id="pwdIcon"></i>
             </button>
           </div>
         </div>
 
         <div class="d-flex align-items-center gap-2 mb-4">
-          <input type="checkbox" id="rememberMe" class="form-check-input bg-transparent border-secondary">
+          <input type="checkbox" id="rememberMe" class="form-check-input bg-transparent border-secondary" tabindex="4">
           <label for="rememberMe" class="text-muted-light fs-sm">Remember me for 30 days</label>
         </div>
 
-        <button type="submit" class="btn btn-primary-grad w-100 py-3 fw-bold ripple-btn">
+        <button type="submit" class="btn btn-primary-grad w-100 py-3 fw-bold ripple-btn" tabindex="6">
           <i class="bi bi-box-arrow-in-right me-2"></i>Sign In
         </button>
       </form>
@@ -145,7 +145,7 @@
     // Check for Admin credentials
     if (email.toLowerCase() === 'admin@internhub.com') {
       localStorage.setItem('isAdminLoggedIn', 'true');
-      window.location.href = "admin-dashboard.html";
+      window.location.href = "admin_dashbord.html";
       return;
     }
 

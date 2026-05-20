@@ -31,7 +31,7 @@
 
         <nav class="sidebar-nav">
             <div class="sidebar-section-title">Main Menu</div>
-            <a href="student_dashbord.html" class="sidebar-link active">
+            <a href="#dashboard-top" class="sidebar-link active">
                 <i class="bi bi-grid-1x2-fill"></i>
                 <span class="link-text">Dashboard</span>
             </a>
@@ -39,36 +39,36 @@
                 <i class="bi bi-briefcase-fill"></i>
                 <span class="link-text">My Internships</span>
             </a>
-            <a href="#" class="sidebar-link">
+            <a href="online_test.html" class="sidebar-link">
                 <i class="bi bi-card-checklist"></i>
                 <span class="link-text">Test Results</span>
             </a>
-            <a href="#" class="sidebar-link">
+            <a href="#notifications-section" class="sidebar-link">
                 <i class="bi bi-bell-fill"></i>
                 <span class="link-text">Notifications</span>
                 <span class="badge-count">3</span>
             </a>
 
             <div class="sidebar-section-title">Learning</div>
-            <a href="learning.html" class="sidebar-link">
+            <a href="learning_resources.html" class="sidebar-link">
                 <i class="bi bi-book-fill"></i>
                 <span class="link-text">Learning Resources</span>
             </a>
-            <a href="#" class="sidebar-link">
+            <a href="#certificates-section" class="sidebar-link">
                 <i class="bi bi-patch-check-fill"></i>
                 <span class="link-text">Certificates</span>
             </a>
 
             <div class="sidebar-section-title">Account</div>
-            <a href="#" class="sidebar-link">
+            <a href="#profile-section" class="sidebar-link">
                 <i class="bi bi-person-fill"></i>
                 <span class="link-text">Profile</span>
             </a>
-            <a href="#" class="sidebar-link">
+            <a href="#payments-section" class="sidebar-link">
                 <i class="bi bi-credit-card-fill"></i>
                 <span class="link-text">Payment History</span>
             </a>
-            <a href="index.html" class="sidebar-link">
+            <a href="javascript:void(0);" onclick="logoutSession()" class="sidebar-link">
                 <i class="bi bi-box-arrow-left"></i>
                 <span class="link-text">Logout</span>
             </a>
@@ -101,7 +101,7 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="index.html">Logout</a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0);" onclick="logoutSession()">Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -109,6 +109,8 @@
 
         <!-- Page Content -->
         <div class="dashboard-content">
+            <!-- TAB: DASHBOARD OVERVIEW -->
+            <div class="dashboard-tab active" id="dashboard-top">
             <div class="container-fluid">
                 <!-- Welcome Header -->
                 <div class="mb-4">
@@ -314,13 +316,88 @@
                             </div>
                             <div class="text-center">
                                 <p class="text-muted-light mb-2">You're doing great! Keep it up.</p>
-                                <a href="learning.html" class="btn btn-primary-grad">Continue Learning</a>
+                                <a href="learning_resources.html" class="btn btn-primary-grad">Continue Learning</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
             </div>
+            </div>
+
+            <!-- TAB: NOTIFICATIONS -->
+            <div class="dashboard-tab" id="notifications-section">
+                <div class="container-fluid">
+                    <h1 class="section-title mb-4">Notifications</h1>
+                    <div class="chart-card">
+                        <div class="notification-item unread">
+                            <div class="notification-icon bg-primary-gradient"><i class="bi bi-bell-fill"></i></div>
+                            <div><div class="fw-600 fs-sm">Application Viewed</div><div class="text-muted-light fs-xs">Tech Innovators Inc. viewed your application • 2 hrs ago</div></div>
+                        </div>
+                        <div class="notification-item unread">
+                            <div class="notification-icon bg-success-gradient"><i class="bi bi-check-circle-fill"></i></div>
+                            <div><div class="fw-600 fs-sm">Test Score Available</div><div class="text-muted-light fs-xs">Your score for General Aptitude is 85% • 1 day ago</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: CERTIFICATES -->
+            <div class="dashboard-tab" id="certificates-section">
+                <div class="container-fluid">
+                    <h1 class="section-title mb-4">My Certificates</h1>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="widget-card text-center py-5">
+                                <i class="bi bi-patch-check-fill text-success fs-1 mb-2 d-block"></i>
+                                <h5 class="fw-bold">Frontend Bootcamp</h5>
+                                <p class="text-muted-light fs-sm mb-3">Completed: May 1, 2026</p>
+                                <button class="btn btn-primary-grad btn-sm"><i class="bi bi-download me-2"></i>Download PDF</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: PROFILE -->
+            <div class="dashboard-tab" id="profile-section">
+                <div class="container-fluid">
+                    <h1 class="section-title mb-4">My Profile</h1>
+                    <div class="chart-card">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <label class="form-label-dark">Full Name</label>
+                                <input type="text" class="form-control-dark" value="Alex Johnson" disabled>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label-dark">Email Address</label>
+                                <input type="email" class="form-control-dark" value="alex@example.com" disabled>
+                            </div>
+                            <div class="col-12 mt-4">
+                                <button class="btn btn-primary-grad">Edit Profile</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: PAYMENT HISTORY -->
+            <div class="dashboard-tab" id="payments-section">
+                <div class="container-fluid">
+                    <h1 class="section-title mb-4">Payment History</h1>
+                    <div class="data-table-container">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead><tr><th>Transaction ID</th><th>Description</th><th>Amount</th><th>Date</th><th>Status</th></tr></thead>
+                                <tbody>
+                                    <tr><td>TXN-99381</td><td>Platform Registration Fee</td><td>₹499</td><td>May 10, 2026</td><td><span class="status-badge approved">Success</span></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </main>
 

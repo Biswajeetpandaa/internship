@@ -22,10 +22,37 @@
     @keyframes fadeIn { from { opacity:0; transform:translateX(20px); } to { opacity:1; transform:none; } }
     .upload-zone { border: 2px dashed var(--card-border); border-radius: var(--radius-md); padding: 2.5rem; text-align: center; transition: var(--transition); cursor: pointer; }
     .upload-zone:hover { border-color: var(--primary); background: rgba(102,126,234,0.05); }
-    .skill-pill { display: inline-flex; align-items: center; gap: 6px; background: rgba(102,126,234,0.15); border: 1px solid rgba(102,126,234,0.3); color: var(--primary); padding: 4px 12px; border-radius: 50px; font-size: .78rem; font-weight: 600; margin: 3px; cursor: pointer; }
-    .skill-pill.selected { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .skill-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(148,163,184,0.35);
+      color: #e2e8f0;
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: .78rem;
+      font-weight: 600;
+      margin: 3px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .skill-pill:hover {
+      background: rgba(79,70,229,0.18);
+      border-color: rgba(99,102,241,0.75);
+      color: #eef2ff;
+      transform: translateY(-1px);
+    }
+    .skill-pill.selected {
+      background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 8px 18px rgba(79,70,229,0.35);
+    }
     .invalid-feedback-custom { color: #f5576c; font-size: .78rem; margin-top: 4px; display: none; }
     .was-validated .invalid-feedback-custom { display: block; }
+    .register-page select.form-control-dark option { background: #fff; color: #0f172a; }
+    .register-page select.form-control-dark option[value=""] { color: #64748b; }
   </style>
 </head>
 <body class="register-page">
@@ -52,11 +79,11 @@
         <div class="row g-3">
           <div class="col-md-6">
             <label class="form-label-dark">Full Name *</label>
-            <input type="text" id="fullName" class="form-control-dark" placeholder="Alex Johnson">
+            <input type="text" id="fullName" class="form-control-dark" placeholder="Enter Full Name">
           </div>
           <div class="col-md-6">
             <label class="form-label-dark">Email Address *</label>
-            <input type="email" id="email" class="form-control-dark" placeholder="alex@example.com">
+            <input type="email" id="email" class="form-control-dark" placeholder="Enter Email Address">
           </div>
           <div class="col-md-6">
             <label class="form-label-dark">Phone Number *</label>
@@ -64,7 +91,7 @@
               <select class="form-control-dark" style="max-width:90px">
                 <option>+91</option><option>+1</option><option>+44</option>
               </select>
-              <input type="tel" class="form-control-dark" placeholder="98765 43210">
+              <input type="tel" class="form-control-dark" placeholder=" +91 98765 43210">
             </div>
           </div>
           <div class="col-md-6">
@@ -98,11 +125,11 @@
         <div class="row g-3">
           <div class="col-md-6">
             <label class="form-label-dark">College / University *</label>
-            <input type="text" class="form-control-dark" placeholder="e.g. IIT Bombay">
+            <input type="text" class="form-control-dark" placeholder="Enter your college / university">
           </div>
           <div class="col-md-6">
             <label class="form-label-dark">Degree / Course *</label>
-            <input type="text" class="form-control-dark" placeholder="e.g. B.Tech Computer Science">
+            <input type="text" class="form-control-dark" placeholder="Enter your degree / course">
           </div>
           <div class="col-md-6">
             <label class="form-label-dark">Year of Study</label>
@@ -113,11 +140,12 @@
           </div>
           <div class="col-md-6">
             <label class="form-label-dark">CGPA / Percentage</label>
-            <input type="text" class="form-control-dark" placeholder="e.g. 8.5 / 85%">
+            <input type="text" class="form-control-dark" placeholder="Current semester CGPA / Percentage">
           </div>
           <div class="col-12">
             <label class="form-label-dark">Skills (select all that apply)</label>
             <div class="mt-2" id="skillsContainer">
+              <span class="skill-pill" onclick="toggleSkill(this)">Java</span>
               <span class="skill-pill" onclick="toggleSkill(this)">Python</span>
               <span class="skill-pill" onclick="toggleSkill(this)">JavaScript</span>
               <span class="skill-pill" onclick="toggleSkill(this)">React.js</span>
@@ -128,7 +156,6 @@
               <span class="skill-pill" onclick="toggleSkill(this)">Communication</span>
               <span class="skill-pill" onclick="toggleSkill(this)">Leadership</span>
               <span class="skill-pill" onclick="toggleSkill(this)">UI/UX Design</span>
-              <span class="skill-pill" onclick="toggleSkill(this)">Java</span>
               <span class="skill-pill" onclick="toggleSkill(this)">Machine Learning</span>
             </div>
           </div>

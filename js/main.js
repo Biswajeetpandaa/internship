@@ -321,6 +321,182 @@ const submitApplication = (jobTitle, buttonEl) => {
   alert(`🎉 Application submitted successfully for "${jobTitle}"! You can track its status in real-time on your Student Dashboard.`);
 };
 
+// ---- HERO TYPEWRITER EFFECT ----
+const initTypewriter = () => {
+  const textEl = document.getElementById('typewriter-text');
+  if (!textEl) return;
+  const words = ["Dream Internships", "Web Development Opportunities", "UI/UX Design Projects", "Digital Marketing Roles", "Exciting Career Openings"];
+  let wordIdx = 0;
+  let charIdx = 0;
+  let isDeleting = false;
+  
+  const type = () => {
+    const currentWord = words[wordIdx];
+    if (isDeleting) {
+      textEl.textContent = currentWord.substring(0, charIdx - 1);
+      charIdx--;
+    } else {
+      textEl.textContent = currentWord.substring(0, charIdx + 1);
+      charIdx++;
+    }
+    
+    let typeSpeed = isDeleting ? 30 : 65;
+    
+    if (!isDeleting && charIdx === currentWord.length) {
+      typeSpeed = 1800; // Pause at full word
+      isDeleting = true;
+    } else if (isDeleting && charIdx === 0) {
+      isDeleting = false;
+      wordIdx = (wordIdx + 1) % words.length;
+      typeSpeed = 400; // Pause before typing next word
+    }
+    
+    setTimeout(type, typeSpeed);
+  };
+  
+  setTimeout(type, 1000);
+};
+
+// ---- REAL-TIME SEARCH & FILTER ----
+const initHomeFilter = () => {
+  const searchInput = document.getElementById('search-input');
+  const locationSelect = document.getElementById('location-select');
+  const categorySelect = document.getElementById('category-select');
+  const searchForm = document.getElementById('search-filter-form');
+  const filterItems = document.querySelectorAll('.filter-item');
+  const noResults = document.getElementById('no-results-msg');
+  const searchStatus = document.getElementById('search-status');
+
+  const expandSearchTerms = (text) => {
+    const aliases = {
+      'web development': ['frontend', 'front end', 'html', 'javascript', 'css'],
+      'front end': ['frontend', 'web development', 'html', 'javascript', 'css'],
+      'ui ux': ['ui', 'ux', 'design'],
+      'ui/ux': ['ui', 'ux', 'design'],
+      'digital marketing': ['seo', 'social media', 'branding', 'content'],
+      'social work': ['ngo', 'volunteer', 'community service'],
+      'hr': ['human resources', 'recruitment', 'people'],
+      'human resources': ['hr', 'recruitment', 'people']
+    };
+
+    const normalized = text.toLowerCase().trim();
+    const groups = [];
+
+    if (normalized) {
+      groups.push(normalized.split(/\s+/).filter(Boolean));
+    }
+
+    Object.keys(aliases).forEach(key => {
+      if (normalized.includes(key)) {
+        groups.push(key.split(/\s+/).filter(Boolean));
+        aliases[key].forEach(alias => {
+          groups.push(alias.toLowerCase().split(/\s+/).filter(Boolean));
+        });
+      }
+    });
+
+    return groups;
+  };
+
+  if (!searchInput && !locationSelect && !categorySelect) return;
+
+  const performFilter = (e) => {
+    if (e) e.preventDefault();
+    const query = (searchInput?.value || '').toLowerCase().trim();
+    const queryGroups = expandSearchTerms(query);
+    const loc = (locationSelect?.value || '').toLowerCase();
+    const cat = (categorySelect?.value || '').toLowerCase();
+    let visibleCount = 0;
+
+    filterItems.forEach(item => {
+      const itemCat = (item.dataset.category || '').toLowerCase();
+      const itemLoc = (item.dataset.location || '').toLowerCase();
+      const itemKeywords = (item.dataset.keywords || '').toLowerCase();
+      const itemText = (item.textContent || '').toLowerCase();
+      const searchableText = `${itemKeywords} ${itemText}`;
+
+      const matchesQuery = queryGroups.length === 0 || queryGroups.some(group => group.every(token => searchableText.includes(token)));
+      const matchesLoc = !loc || itemLoc === loc;
+      const matchesCat = !cat || itemCat === cat;
+
+      if (item._hideTimer) {
+        clearTimeout(item._hideTimer);
+        item._hideTimer = null;
+      }
+
+      if (matchesQuery && matchesLoc && matchesCat) {
+        item.style.display = '';
+        item.style.opacity = '0';
+        item.style.transform = 'scale(0.9)';
+        setTimeout(() => {
+          item.style.transition = 'all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1)';
+          item.style.opacity = '1';
+          item.style.transform = 'scale(1)';
+        }, 30);
+        visibleCount++;
+      } else {
+        item.style.transition = 'all 0.3s ease';
+        item.style.opacity = '0';
+        item.style.transform = 'scale(0.8)';
+        item._hideTimer = setTimeout(() => {
+          item.style.display = 'none';
+          item._hideTimer = null;
+        }, 300);
+      }
+    });
+
+    if (noResults) {
+      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    if (searchStatus) {
+      if (!query && !loc && !cat) {
+        searchStatus.textContent = 'Browse featured internships below or use the filters to narrow results.';
+      } else if (visibleCount > 0) {
+        searchStatus.textContent = `Showing ${visibleCount} matching internship${visibleCount === 1 ? '' : 's'}.`;
+      } else {
+        searchStatus.textContent = 'No internships found. Try a different keyword or filter.';
+      }
+    }
+
+    if (e && searchForm) {
+      const target = document.getElementById('internships');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  };
+
+  if (searchForm) searchForm.addEventListener('submit', performFilter);
+  if (searchInput) searchInput.addEventListener('input', performFilter);
+  if (locationSelect) locationSelect.addEventListener('change', performFilter);
+  if (categorySelect) categorySelect.addEventListener('change', performFilter);
+
+  // Expose resetFilters globally
+  window.resetFilters = () => {
+    if (searchInput) searchInput.value = '';
+    if (locationSelect) locationSelect.value = '';
+    if (categorySelect) categorySelect.value = '';
+    performFilter();
+    const target = document.getElementById('internships');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  // Expose triggerCategoryFilter globally for category cards
+  window.triggerCategoryFilter = (categoryValue) => {
+    if (categorySelect) {
+      categorySelect.value = categoryValue;
+      performFilter();
+      const target = document.getElementById('internships');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  };
+};
+
 // ---- INIT ----
 document.addEventListener('DOMContentLoaded', () => {
   animateOnScroll();
@@ -330,6 +506,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initSearch();
   handleLoggedInNavbar();
   initApplyInterceptor();
+  initTypewriter();
+  initHomeFilter();
 
   // Bootstrap tooltips
   const tooltipTriggers = document.querySelectorAll('[data-bs-toggle="tooltip"]');

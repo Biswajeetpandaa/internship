@@ -13,7 +13,7 @@
     const btn = document.createElement('button');
     btn.id = 'theme-toggle-btn';
     btn.setAttribute('aria-label', 'Toggle light / dark mode');
-    btn.innerHTML = `<span id="theme-toggle-icon">${isLightPref ? '☀️' : '🌙'}</span><span id="theme-toggle-label" class="d-none d-md-inline ms-1">${isLightPref ? 'Dark Mode' : 'Light Mode'}</span>`;
+    btn.innerHTML = `<span id="theme-toggle-icon">${isLightPref ? '🌙' : '☀️'}</span>`;
     
     // Find the right-side nav container (where the profile is rendered)
     const authNav = document.querySelector('.navbar-collapse > .d-flex');
@@ -24,18 +24,15 @@
     }
 
     const icon  = document.getElementById('theme-toggle-icon');
-    const label = document.getElementById('theme-toggle-label');
 
     /* ---- Toggle handler ---- */
     btn.addEventListener('click', function () {
       const isLight = document.body.classList.toggle('light-mode');
       if (isLight) {
-        icon.textContent  = '☀️';
-        label.textContent = 'Dark Mode';
+        icon.textContent  = '🌙';
         localStorage.setItem('internhub-theme', 'light');
       } else {
-        icon.textContent  = '🌙';
-        label.textContent = 'Light Mode';
+        icon.textContent  = '☀️';
         localStorage.setItem('internhub-theme', 'dark');
       }
     });

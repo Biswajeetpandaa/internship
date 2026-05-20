@@ -101,5 +101,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // --- TAB NAVIGATION ---
+    const sidebarLinks = document.querySelectorAll('.sidebar-link[href^="#"]');
+    const dashboardTabs = document.querySelectorAll('.dashboard-tab');
+
+    if (sidebarLinks.length > 0 && dashboardTabs.length > 0) {
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Remove active from all links
+                sidebarLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                
+                // Hide all tabs
+                dashboardTabs.forEach(tab => tab.classList.remove('active'));
+                
+                // Show target tab
+                const targetId = link.getAttribute('href').substring(1);
+                const targetTab = document.getElementById(targetId);
+                if (targetTab) {
+                    targetTab.classList.add('active');
+                }
+
+                // Close mobile sidebar if open
+                if (window.innerWidth < 992) {
+                    sidebar.classList.remove('mobile-open');
+                    sidebarOverlay.classList.remove('visible');
+                }
+            });
+        });
+    }
+
     renderCharts();
 });
