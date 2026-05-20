@@ -2,6 +2,65 @@
    MAIN JS - InternHub
    ========================================= */
 
+// ---- UI SOUND SYNTHESIS USING WEBAUDIO API (PREMIUM TECH CUE) ----
+let audioCtx = null;
+
+const playUISound = (type = 'click') => {
+  try {
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+
+    const osc = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+
+    osc.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+
+    const now = audioCtx.currentTime;
+
+    if (type === 'click') {
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(1100, now);
+      osc.frequency.exponentialRampToValueAtTime(300, now + 0.06);
+
+      gainNode.gain.setValueAtTime(0.03, now); 
+      gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+
+      osc.start(now);
+      osc.stop(now + 0.06);
+    } else if (type === 'success') {
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(523.25, now); // C5
+      osc.frequency.setValueAtTime(659.25, now + 0.08); // E5
+
+      gainNode.gain.setValueAtTime(0.04, now);
+      gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+
+      osc.start(now);
+      osc.stop(now + 0.25);
+    }
+  } catch (error) {
+    console.warn("AudioContext error: ", error);
+  }
+};
+window.playUISound = playUISound;
+
+// Global click event for high-tech premium sound feedback
+document.addEventListener('click', (e) => {
+  const interactive = e.target.closest('.btn, .btn-primary-grad, .btn-outline-light-grad, .btn-accent-grad, .btn-success-grad, .nav-link, .sidebar-link, #theme-toggle-btn, .quick-btn, .mcq-option, .category-card');
+  if (interactive) {
+    if (interactive.id === 'confirmSubmit' || interactive.classList.contains('btn-success-grad')) {
+      playUISound('success');
+    } else {
+      playUISound('click');
+    }
+  }
+});
+
 // ---- PAGE LOADER ----
 window.addEventListener('load', () => {
   const loader = document.querySelector('.page-loader');
@@ -497,8 +556,27 @@ const initHomeFilter = () => {
   };
 };
 
+// ---- SCROLL PROGRESS BAR DYNAMIC CREATION & LISTENERS ----
+const initScrollProgress = () => {
+  if (document.querySelector('.scroll-progress-container')) return;
+  const container = document.createElement('div');
+  container.className = 'scroll-progress-container';
+  const bar = document.createElement('div');
+  bar.className = 'scroll-progress-bar';
+  container.appendChild(bar);
+  document.body.appendChild(container);
+
+  window.addEventListener('scroll', () => {
+    const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+    bar.style.width = scrolled + '%';
+  });
+};
+
 // ---- INIT ----
 document.addEventListener('DOMContentLoaded', () => {
+  initScrollProgress();
   animateOnScroll();
   animateCounters();
   initChatbot();

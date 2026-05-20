@@ -55,9 +55,10 @@
         <div class="glow-blob glow-blob-secondary" style="bottom: 15%; right: 5%;"></div>
 
         <div class="container text-center position-relative z-1">
-            <div class="d-inline-flex align-items-center gap-2 floating-badge mb-4" data-anim="fade-up">
+            <div class="d-inline-flex align-items-center gap-2 floating-badge mb-4" data-anim="fade-up" id="mobile-promo-badge">
                 <span class="badge bg-success rounded-circle p-1"><i class="bi bi-check2"></i></span>
                 <span>Over 1,000+ new internships added this week</span>
+                <button type="button" class="ms-auto d-md-none border-0 bg-transparent text-white p-1" aria-label="Close" onclick="const badge = document.getElementById('mobile-promo-badge'); badge.style.opacity='0'; badge.style.transform='translateX(-50%) translateY(120px)'; setTimeout(() => badge.remove(), 400); if (window.playUISound) { window.playUISound('click'); }" style="font-size: 0.85rem; line-height: 1; opacity: 0.7; transition: var(--transition); display: inline-flex; align-items: center; justify-content: center;"><i class="bi bi-x-lg"></i></button>
             </div>
 
             <h1 class="hero-title mb-4" data-anim="fade-up" data-delay="1">

@@ -250,7 +250,18 @@
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: var(--radius-md);
-  overflow: hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.data-table-container::-webkit-scrollbar {
+  height: 6px;
+}
+.data-table-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+.data-table-container::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 3px;
 }
 
 .data-table-header {
